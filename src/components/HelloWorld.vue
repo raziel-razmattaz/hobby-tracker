@@ -8,7 +8,7 @@ import { ref } from 'vue'
 
 //TODO:
 // Complete Vue Tutorial!! (currently @ 8/15)
-// New GitHub Project + init project!
+// DONE
 // Re-Reach current check-list status (possibly different impl? think "data")
 // Think about Presentation! + which screens do you want to have? Probably "frame" + diff components inside
 // Begin Implementing done today checks using dates of last check
