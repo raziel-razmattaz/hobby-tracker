@@ -2,15 +2,17 @@
 
 ## Must-Haves:
 
--> Hobby Manager (Add & Delete Hobbies)
+-> ~~Hobby Manager (Add & Delete Hobbies)~~
 
 -> Save Hobbies in LocalStorage
 
--> Mark which Hobbies you did today
+-> ~~Mark which Hobbies you did today~~
 
--> Reset Checkmarks each Day
+-> ~~Checkmarks only Checked when current date == last date~~
 
 -> How long has it been since you’ve last done [hobby]?
+
+-> ~~Unchecking should redo to old last done date~~
 
 -> LocalStorage Save Frequency in last 30 days + LastDate for each Hobby
 
