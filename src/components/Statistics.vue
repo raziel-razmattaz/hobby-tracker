@@ -5,10 +5,13 @@ defineProps({
 });
 
 //TODO:
+// Access Hobby Data from HobbyManager (somehow)
+// Possibly: Seperate storage access component that both can access?
+// SOLUTION: Vuex stores (!!!)
 // Display Data related to how often each Hobby was done
 // Switch between Statistics and Hobby List in "Main Frame"
 
-//defineEmits(['do-something']);
+defineEmits(['do-something']);
 
 </script>
 
