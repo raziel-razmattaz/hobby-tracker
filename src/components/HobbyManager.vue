@@ -1,15 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 
-//defineProps({
-  //msg: String,
-  //test: String
-//})
-
-//TODO:
-// Display Data related to how often each Hobby was done (Statistics Component)
-// Switch between Statistics and Hobby List in "Main Frame"
-
 let id = 0;
 
 const newHobby = ref('')
