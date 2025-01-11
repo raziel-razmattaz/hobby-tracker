@@ -10,6 +10,8 @@
 
 -> ~~Checkmarks only Checked when current date == last date~~
 
+-> Implement Vuex for easy, centralised shared hobby data access
+
 -> How long has it been since you’ve last done [hobby]?
 
 -> ~~Unchecking should redo to old last done date~~

@@ -1,5 +1,7 @@
 <script setup>
-import HelloWorld from './components/HobbyManager.vue'
+import HobbyManager from './components/HobbyManager.vue'
+//TODO:
+// Switch between Statistics and Hobby List in "Main Frame" Component
 </script>
 
 <template>
@@ -8,7 +10,7 @@ import HelloWorld from './components/HobbyManager.vue'
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
   </div>
-  <HelloWorld/>
+  <HobbyManager/>
 </template>
 
 <style scoped>
