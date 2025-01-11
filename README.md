@@ -4,7 +4,7 @@
 
 -> ~~Hobby Manager (Add & Delete Hobbies)~~
 
--> Save Hobbies in LocalStorage
+-> ~~Save Hobbies in LocalStorage~~
 
 -> ~~Mark which Hobbies you did today~~
 

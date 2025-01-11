@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 //defineProps({
   //msg: String,
@@ -7,7 +7,6 @@ import { ref } from 'vue'
 //})
 
 //TODO:
-// LocalStorage for Persistance (Seperate Component...?)
 // Display Data related to how often each Hobby was done (Statistics Component)
 // Switch between Statistics and Hobby List in "Main Frame"
 
@@ -22,7 +21,6 @@ const hobbies = ref([
 ])
 
 function addHobby() {
-  //const today = new Date().toISOString().split('T')[0];
   hobbies.value.push({ id: id++, text: newHobby.value, last_done: null, done_history: [] });
   newHobby.value = '';
 }
@@ -41,7 +39,6 @@ function toggleDoneToday(hobby) {
   const today = new Date().toISOString().split('T')[0];
 
   if (isDoneToday(hobby)) {
-    // remove from list if unchecked
     const index = hobby.done_history.indexOf(today);
     if (index !== -1) {
       hobby.done_history.splice(index, 1);
@@ -55,6 +52,18 @@ function toggleDoneToday(hobby) {
   }
 }
 
+watch(hobbies, (newHobbies) => {
+  localStorage.setItem('hobbies', JSON.stringify(newHobbies));
+}, { deep: true });
+
+onMounted(() => {
+  const storedHobbies = localStorage.getItem('hobbies');
+  if (storedHobbies) {
+    hobbies.value = JSON.parse(storedHobbies);
+    id = hobbies.value.length > 0 ? Math.max(...hobbies.value.map(h => h.id)) + 1 : 0;
+  }
+});
+
 </script>
 
 <template>
@@ -65,14 +74,14 @@ function toggleDoneToday(hobby) {
   <ul>
     <li v-for="hobby in hobbies" v-bind:key="hobby.id">
       <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby)">
-      {{ hobby.text }} <span class="read-the-docs">{{ hobby.last_done }}</span>
+      {{ hobby.text }} <span class="date">{{ hobby.last_done }}</span>
       <button @click="removeHobby(hobby)">x</button>
     </li>
   </ul>
 </template>
 
 <style scoped>
-.read-the-docs {
+.date {
   color: #888;
 }
 </style>
