@@ -2,56 +2,62 @@
 
 ## Must-Haves:
 
--> ~~Hobby Manager (Add & Delete Hobbies)~~
+1. ~~Basic Hobby Store in Pinia~~
 
--> ~~Save Hobbies in LocalStorage~~
+1. ~~Basic Hobby Manager (Add & Delete Hobbies) through Store Access~~
 
--> ~~Mark which Hobbies you did today~~
+1. Save Hobby Store in LocalStorage
 
--> ~~Checkmarks only Checked when current date == last date~~
+1. Checkmark Hobbies you persist that data ("doneToday")
 
--> Implement Vuex for easy, centralised shared hobby data access
+1. Toggling checkmark on records current date in HobbyHistory
 
--> How long has it been since you’ve last done [hobby]?
+1. Toggling checkmark off removes current date in HobbyHistory
 
--> ~~Unchecking should redo to old last done date~~
+1. Checkmarks show correctly according to HobbyHistory upon Page Reload
 
--> LocalStorage Save Frequency in last 30 days + LastDate for each Hobby
+1. Unchecking should revert to show previous latest save date
 
--> Suggest 3 Activties based on previous data (or random if none exists)
+1. If no latest date exist, display "Never" in place of date
 
--> Present how much you do each Hobby (somehow)
+1. Basic Statistics component (display all Hobby Data) trough Store Access
 
--> Ability to switch components in the Main Frame
+1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 
--> Main Frame
+1. Calculated Statistics: How frequently did you do [hobby] in the last 30 days?
 
--> Screens: Hobby Manager (+ simple stats?), Stats (in depth), Suggestions
+1. Clear Hobby Data after 30 days, except for the latest two times the Hobby was done
 
--> Finished UI Design (pastel + goth variants)
+1. Calculated Hobby Statistics: Barebones Graphical Presentation
+
+1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
+
+1. Main Menu Component
+
+1. Ability to switch out Hobby List, Statistics and Suggestions components in Main Menu using Button Toggle
+
+1. Figma: Finished UI Design (pastel + goth variants)
 
 ## Also Must-Haves (but only after the top ones are done)
 
--> Reset All Frequency Data
+1. Statistics Component: Reset All Frequency Data
 
--> Delete All Hobbies (incl Frequency Data)
+1. Hobby Component: Delete All Hobbies (incl Frequency Data)
 
--> UI Dark and Light Mode Switch
+1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social)
 
--> Implement UI
+1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
 
--> Flap-Out Sidebar
+1. Basic About/Intro Component to explain Hobby Tracker Functionality
 
--> Responsive UI Mobile and Desktop (woo)
+1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 
--> Tutorial/Intro Screen
+1. Import/Export LocalStorage Save Data
 
--> Hobby Categories (Creative, Stimulating, Physical, Productive, Social)
+1. CSS: Implement UI Design
 
--> Ability to Filter by Hobby (4 Buttons at the top! You know what I mean)
+1. CSS: Ensure responsive UI on Mobile and Desktop
 
--> Alerts/Notifs when you load, like “You haven’t done X in over 2 weeks, why don’t you try it again?”
+1. CSS: UI Dark and Light Mode Switch
 
--> Import/Export!!
-
--> Host on Git or Itch (unlisted) or something!
+1. Host Hobby Tracker Free
