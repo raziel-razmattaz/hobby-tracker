@@ -12,13 +12,13 @@
 
 1. ~~Toggling checkmark off removes current date in HobbyHistory~~
 
-1. ~~Checkmarks show correctly according to HobbyHistory upon Page Reload~~
+1. ~~Checkmarks shows correctly according to HobbyHistory upon Page Reload~~
 
 1. ~~Unchecking should revert to show previous latest save date~~
 
 1. ~~If no latest date exist, display "Never" in place of date~~
 
-1. Basic Statistics component (display all Hobby Data) trough Store Access
+1. Basic Statistics component (display all Hobby Data) through Store Access
 
 1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 
@@ -57,5 +57,7 @@
 1. CSS: Ensure responsive UI on Mobile and Desktop
 
 1. CSS: UI Dark and Light Mode Switch
+
+1. Accesibility Check and Fixes
 
 1. Host Hobby Tracker Free
