@@ -3,7 +3,7 @@ import { defineStore } from "pinia"
 export const useHobbiesStore = defineStore('hobbies', {
     state: () => ({
         /** @type {{ text: string, id: number, doneToday: boolean }[]} */
-        hobbies: [],
+        hobbies: JSON.parse(localStorage.getItem("hobbies")) || [],
         /** @//type {'all' | 'doneToday' | 'notDoneToday'} */
         //filter: 'all',
         nextId: 0
@@ -26,10 +26,15 @@ export const useHobbiesStore = defineStore('hobbies', {
     }, */
     actions: {
         addHobby(text) {
-            this.hobbies.push({text, id: this.nextId++, doneToday: false})
+            this.hobbies.push({text, id: this.nextId++, doneToday: false});
+            this.persistToLocalStorage();
         },
         removeHobby(hobbyID) {
-            this.hobbies = this.hobbies.filter(hobby => hobby.id !== hobbyID)
-        }
+            this.hobbies = this.hobbies.filter(hobby => hobby.id !== hobbyID);
+            this.persistToLocalStorage();
+        },
+        persistToLocalStorage() {
+            localStorage.setItem("hobbies", JSON.stringify(this.hobbies));
+        },
     }
 })

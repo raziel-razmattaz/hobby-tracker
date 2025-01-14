@@ -7,8 +7,8 @@ const hobbies = useHobbiesStore()
 
 const newHobby = ref('');
 
-hobbies.addHobby("Test Hobby")
-hobbies.addHobby("Test Hobby 2")
+//hobbies.addHobby("Test Hobby")
+//hobbies.addHobby("Test Hobby 2")
 
 function addHobby() {
   if (newHobby.value.trim()) {
