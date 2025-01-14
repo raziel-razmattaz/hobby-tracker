@@ -6,19 +6,17 @@
 
 1. ~~Basic Hobby Manager (Add & Delete Hobbies) through Store Access~~
 
-1. Save Hobby Store in LocalStorage
+1. ~~Save Hobby Store in LocalStorage~~
 
-1. Checkmark Hobbies you persist that data ("doneToday")
+1. ~~Toggling checkmark on records current date in HobbyHistory~~
 
-1. Toggling checkmark on records current date in HobbyHistory
+1. ~~Toggling checkmark off removes current date in HobbyHistory~~
 
-1. Toggling checkmark off removes current date in HobbyHistory
+1. ~~Checkmarks show correctly according to HobbyHistory upon Page Reload~~
 
-1. Checkmarks show correctly according to HobbyHistory upon Page Reload
+1. ~~Unchecking should revert to show previous latest save date~~
 
-1. Unchecking should revert to show previous latest save date
-
-1. If no latest date exist, display "Never" in place of date
+1. ~~If no latest date exist, display "Never" in place of date~~
 
 1. Basic Statistics component (display all Hobby Data) trough Store Access
 
