@@ -1,19 +1,18 @@
 <script setup>
 
-defineEmits(['do-something']);
+import { useHobbiesStore } from '../stores/hobbies';
+
+const hobbies = useHobbiesStore();
 
 </script>
 
 <template>
     <div>
-      <h2>Statistics</h2>
+      <h3>Statistics</h3>
       <ul>
-        <!-- Test feature! -->
-        <li v-for="hobby in hobbies" :key="hobby.id">
-          {{ hobby.text }} - Done {{ hobby.done_history.length }} times
-          <button @click="$emit('do-something', hobby.id)">Whatever</button>
+        <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
+          {{ hobby.text }} - Done {{ hobby.hobbyHistory.length }} times
         </li>
       </ul>
-      <!-- TODO: everything -->
     </div>
   </template>

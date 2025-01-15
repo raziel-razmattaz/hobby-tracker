@@ -1,9 +1,9 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref } from 'vue'
 
 import { useHobbiesStore } from '../stores/hobbies';
 
-const hobbies = useHobbiesStore()
+const hobbies = useHobbiesStore();
 
 const newHobby = ref('');
 
