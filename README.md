@@ -24,9 +24,11 @@
 
 1. Calculated Statistics: What are the hobbies you did the most?
 
-1. Quick Overview Component: Pie Chart of Hobbies checkmarked today
+1. Pass Custom Data to Chart Component
 
 1. Quick Overview Component: Simple Bar Chart of top 3 most frquently done Hobbies
+
+1. Quick Overview Component: Pie Chart of Hobbies checkmarked today
 
 1. Basic Calender Review Component: Hobby Activity colours days
 
