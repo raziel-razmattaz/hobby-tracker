@@ -5,6 +5,11 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
+// TODO:
+// Make Chart Horizontal Bar Chart instead
+// Receive Dyamic Data (make sure to take waiting for data into account with v-if!)
+// Set Bar Colours to something more visible instead
+
 export default {
   name: 'TestChart',
   components: { Bar },
@@ -15,7 +20,8 @@ export default {
         datasets: [ { data: [6, 4, 1] } ]
       },
       chartOptions: {
-        responsive: true
+        responsive: false,
+        maintainAspectRatio: false
       }
     }
   }
