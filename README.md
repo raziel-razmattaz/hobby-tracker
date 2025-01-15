@@ -20,6 +20,8 @@
 
 1. ~~Basic Statistics component through Store Access~~
 
+1. ~~Basic Test Bar Chart using Chart.js~~
+
 1. Calculated Statistics: What are the hobbies you did the most?
 
 1. Quick Overview Component: Pie Chart of Hobbies checkmarked today

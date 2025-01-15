@@ -1,6 +1,7 @@
 <script setup>
 
 import { useHobbiesStore } from '../stores/hobbies';
+import TestChart from './TestChart.vue';
 
 const hobbies = useHobbiesStore();
 
@@ -14,5 +15,6 @@ const hobbies = useHobbiesStore();
           {{ hobby.text }} - Done {{ hobby.hobbyHistory.length }} times
         </li>
       </ul>
+      <TestChart>Chart couldn't render</TestChart>
     </div>
   </template>
