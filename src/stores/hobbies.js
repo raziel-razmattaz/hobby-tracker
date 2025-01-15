@@ -1,16 +1,16 @@
 import { defineStore } from "pinia"
+import { v4 as uuidv4 } from "uuid"
 
 export const useHobbiesStore = defineStore('hobbies', {
     state: () => ({
         /** @type {{ text: string, id: number, hobbyHistory: string[] }[]} */
         hobbies: JSON.parse(localStorage.getItem("hobbies")) || [],
         /** @//type {'all' | 'doneToday' | 'notDoneToday'} */
-        //filter: 'all',
-        nextId: 0
+        //filter: 'all'
     }),
     actions: {
         addHobby(text) {
-            this.hobbies.push({text, id: this.nextId++, hobbyHistory: []});
+            this.hobbies.push({text, id: uuidv4(), hobbyHistory: []});
             this.persistToLocalStorage();
         },
         removeHobby(hobbyID) {
