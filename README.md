@@ -74,4 +74,6 @@
 
 1. Accesibility Check and Fixes
 
+1. Finish Documentation
+
 1. Host Hobby Tracker Free
