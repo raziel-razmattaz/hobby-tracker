@@ -22,11 +22,15 @@
 
 1. ~~Basic Test Bar Chart using Chart.js~~
 
-1. Calculated Statistics: What are the hobbies you did the most?
-
 1. Pass Custom Data to Chart Component
 
+1. Hobby Frequency Graph: Frequency Comparison of all Hobbies during the last 30 days
+
+1. Calculated Statistics: What are the hobbies you did the most?
+
 1. Quick Overview Component: Simple Bar Chart of top 3 most frquently done Hobbies
+
+1. Calculated Statistics: Which Hobbies did you do today?
 
 1. Quick Overview Component: Pie Chart of Hobbies checkmarked today
 
@@ -39,8 +43,6 @@
 1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 
 1. Calculated Statistics: How frequently did you do [hobby] in the last 30 days?
-
-1. Hobby Frequency Graph: Frequency Comparison of all Hobbies during the last 30 days
 
 1. Limit Hobby History to last 30 days (except the very last date, in case someone unchecks "today")
 
