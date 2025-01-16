@@ -6,7 +6,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 export default {
-  name: 'TestChart',
+  name: 'FrequencyChart',
   components: { Bar },
   props: {
     chartData: {

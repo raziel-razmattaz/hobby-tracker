@@ -2,7 +2,7 @@
 
 import { computed } from 'vue'
 import { useHobbiesStore } from '../stores/hobbies';
-import TestChart from './TestChart.vue';
+import FrequencyChart from './FrequencyChart.vue';
 
 const hobbies = useHobbiesStore();
 
@@ -15,7 +15,7 @@ const chartData = computed(() => {
       {
         label: 'Hobby Activity',
         data,
-        backgroundColor: 'rgba(75, 192, 192, 0.6)'
+        backgroundColor: 'rgba(245, 40, 145, 0.8)'
       }
     ]
   };
@@ -25,8 +25,8 @@ const chartOptions = {
   responsive: false,
   maintainAspectRatio: false,
   plugins: {
-    legend: { display: true },
-    tooltip: { enabled: true }
+    legend: { display: false },
+    tooltip: { enabled: false }
   }
 };
 
@@ -40,8 +40,10 @@ const chartOptions = {
         {{ hobby.text }} - Done {{ hobby.hobbyHistory.length }} times
       </li>
     </ul>
-    <div width="400px" heigth=400px>
-      <TestChart :chartData="chartData" :chartOptions="chartOptions">Chart couldn't render</TestChart>
+    <div width="400px">
+      <FrequencyChart :chartData="chartData" :chartOptions="chartOptions">
+        Chart couldn't render
+      </FrequencyChart>
     </div>
   </div>
 </template>
