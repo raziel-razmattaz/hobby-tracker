@@ -80,7 +80,7 @@ hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
     "2024-11-15",
     "2024-12-15"
 ];
-hobbies.persistToLocalStorage();*/
+hobbies.persistToLocalStorage();//*/
 
 function addHobby() {
   if (newHobby.value.trim()) {
