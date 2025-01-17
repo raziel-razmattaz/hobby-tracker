@@ -1,12 +1,10 @@
 <script>
 
-import { Pie } from 'vue-chartjs';
+import { Doughnut } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
 //TODO:
 //Segments coloured according to simple "gradient" (ie 20% opacity, 30% etc.)
-//Remove Labels and Tooltips
-//Remove Borders around Segments
 //Implement on Hover: Small <p> at the Bottom that says: "You did [hobby] X times (YY%)!"
 //If no Hover have it say: "Hover over a segment to see details."
 //Ensure it also works with Tap/Click (for mobile)
@@ -15,7 +13,7 @@ ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
 export default {
   name: 'DistributionChart',
-  components: { Pie },
+  components: { Doughnut },
   props: {
     distributionChartData: {
       type: Object,
@@ -30,7 +28,7 @@ export default {
 </script>
 
 <template>
-  <Pie 
+  <Doughnut 
     :data="distributionChartData"
     :options="distributionChartOptions" 
   />
