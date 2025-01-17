@@ -22,7 +22,7 @@ const chartData = computed(() => {
 });
 
 const chartOptions = {
-  responsive: false,
+  responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },

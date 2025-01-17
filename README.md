@@ -44,7 +44,7 @@
 
 1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 
-1. Limit Hobby History to last 30 days (except the most recent date, so it doesn't go to "Never")
+1. Limit Frequency/Top/Distribution to last 30 days
 
 1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
 

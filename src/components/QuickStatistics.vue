@@ -77,7 +77,7 @@ const distributionChartOptions = {
           return chart.data.labels.map((label, i) => ({
             text: `${label} (${data.data[i]})`,
             fillStyle: data.backgroundColor[i],
-            fontColor: 'rgb(96, 96, 96)',
+            fontColor: 'rgb(96, 96, 96)', //LATER: adjust based on theme
             pointStyle: 'circle',
             lineWidth: 0,
           }));
