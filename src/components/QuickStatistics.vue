@@ -44,17 +44,19 @@ const topChartOptions = {
 };
 
 const distributionChartData = computed(() => {
-  const labels = hobbies.hobbies.map(hobby => hobby.text);
-  const data = hobbies.hobbies.map(hobby => hobby.hobbyHistory.length);
-  const total = data.reduce((sum, count) => sum + count, 0);
-  const percentages = data.map(count => ((count / total) * 100).toFixed(2));
+  const sortedHobbies = hobbies.hobbies.slice().sort((a, b) => a.hobbyHistory.length - b.hobbyHistory.length);
+  const labels = sortedHobbies.map(hobby => hobby.text);
+  const data = sortedHobbies.map(hobby => hobby.hobbyHistory.length);
+
+  const backgroundColors = generateColors(data.length);
 
   return {
     labels,
     datasets: [
       {
-        data: percentages,
-        backgroundColor: 'rgba(245, 40, 145, 0.8)',
+        data: data,
+        backgroundColor: backgroundColors,
+        borderWidth: 0,
       },
     ],
   };
@@ -64,9 +66,19 @@ const distributionChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
-    legend: { display: true },
-    tooltip: { enabled: true },
+    legend: { display: false },
+    tooltip: { enabled: false },
+    datalabels: { display: false }
   },
+};
+
+const generateColors = (count) => {
+  const colors = [];
+  for (let i = 0; i < count; i++) {
+    const hue = 360 - (i * 90) / (count - 1);
+    colors.push(`hsla(${hue}, 70%, 50%, 0.8)`);
+  }
+  return colors;
 };
 
 </script>
@@ -79,7 +91,7 @@ const distributionChartOptions = {
         Chart couldn't render.
       </TopHobbiesChart>
     </div>
-    <div style="width: 400px">
+    <div style="width: 400px;">
       <DistributionChart :distributionChartData="distributionChartData" :distributionChartOptions="distributionChartOptions">
         Chart couldn't render.
       </DistributionChart>
