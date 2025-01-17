@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-    <Bar
-      :options="chartOptions"
-      :data="chartData"
-    />
-  </template>
+  <Bar
+    :options="chartOptions"
+    :data="chartData"
+  />
+</template>

@@ -9,11 +9,11 @@ export default {
   name: 'TopHobbiesChart',
   components: { Bar },
   props: {
-    chartData: {
+    topChartData: {
       type: Object,
       required: true
     },
-    chartOptions: {
+    topChartOptions: {
       type: Object,
       required: true
     }
@@ -23,12 +23,12 @@ export default {
 </script>
 
 <template>
-    <p v-if="!chartData || chartData.datasets[0].data.length === 0">
-        To see your stats, get started by recording some hobby performance data!
-    </p>
-    <Bar
-      v-else
-      :options="chartOptions"
-      :data="chartData"
-    />
-  </template>
+  <p v-if="!topChartData || topChartData.datasets[0].data.length === 0">
+      To see your stats, get started by recording some hobby performance data!
+  </p>
+  <Bar
+    v-else
+    :options="topChartOptions"
+    :data="topChartData"
+  />
+</template>
