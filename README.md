@@ -34,9 +34,7 @@
 
 1. ~~Basic Quick Overview Component: Top Hobbies + Something else...?~~
 
-1. Basic Hobby Pie Chart Component
-
-1. Hobby Pie Chart: Info over dynamic text given on hover
+1. ~~Basic Hobby Pie Chart Component~~
 
 1. Basic Calender Review Component: Hobby Activity colours days
 
@@ -46,7 +44,7 @@
 
 1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 
-1. Limit Hobby History to last 30 days (except the very last date, in case someone unchecks "today")
+1. Limit Hobby History to last 30 days (except the most recent date, so it doesn't go to "Never")
 
 1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
 

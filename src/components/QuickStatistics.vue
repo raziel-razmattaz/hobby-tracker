@@ -56,7 +56,8 @@ const distributionChartData = computed(() => {
       {
         data: data,
         backgroundColor: backgroundColors,
-        borderWidth: 0,
+        borderColor: 'rgb(36, 36, 36)', //LATER: change according to theme
+        borderWidth: 2,
       },
     ],
   };
@@ -66,9 +67,24 @@ const distributionChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
-    legend: { display: false },
-    tooltip: { enabled: false },
-    datalabels: { display: false }
+    legend: { 
+      display: true,
+      position: 'bottom',
+      labels: {
+        usePointStyle: true,
+        generateLabels: (chart) => {
+          const data = chart.data.datasets[0];
+          return chart.data.labels.map((label, i) => ({
+            text: `${label} (${data.data[i]})`,
+            fillStyle: data.backgroundColor[i],
+            fontColor: 'rgb(96, 96, 96)',
+            pointStyle: 'circle',
+            lineWidth: 0,
+          }));
+        },
+      },
+    },
+    tooltip: { enabled: false }
   },
 };
 
