@@ -7,15 +7,21 @@ export default {
   components: { VueCal },
   data() {
     return {
-      events: [],
+      events: [{
+        start: '2025-01-15',
+        end: '2025-01-19',
+        title: 'Tests Tests'
+      }],
       selectedDate: null,
       selectedHobbies: [],
     };
   },
   methods: {
-    handleDayClick(day) {
-      this.selectedDate = day.date;
-      this.selectedHobbies = this.getHobbiesByDate(day.date);
+    handleDayClick(date) {
+      this.selectedDate = date.toISOString().split('T')[0];
+      console.log(this.selectedDate);
+      this.selectedHobbies = this.getHobbiesByDate(this.selectedDate);
+      console.log(this.selectedHobbies);
     },
     getHobbiesByDate(date) {
       return [];
@@ -24,7 +30,6 @@ export default {
 };
 
 // TODO:
-// Calendar click -> info for day
 // Get Hobby data per day
 // Colour calendar day based on how many Hobbies you checkmarked that day (Blank to Very Saturated)
 
@@ -33,13 +38,17 @@ export default {
 <template>
   <h3>Calendar</h3>
     <vue-cal 
-      style="height: 400px; width: 600px;"
+      style="height: 400px; width: 600px; overflow-x: hidden; position: relative;"
       hide-view-selector
-      :time="false"
       active-view="month"
       :disable-views="['years', 'year', 'week', 'day']"
+      :events="events"
+      @cell-click="handleDayClick"
     />
-  <div v-if="selectedDate">
-    <h4>{{ selectedDate }}</h4>
+  <div>
+    <p>{{ selectedDate || "Click on a day to see details."}}</p>
   </div>
 </template>
+
+<style scoped>
+</style>
