@@ -9,7 +9,7 @@ export default {
     return {
       events: [{
         start: '2025-01-15',
-        end: '2025-01-19',
+        end: '2025-01-18',
         title: 'Tests Tests'
       }],
       selectedDate: null,
@@ -27,10 +27,16 @@ export default {
       return [];
     },
   },
+  computed: {
+  maxDate () {
+    return new Date().format()
+  }
+}
 };
 
 // TODO:
 // Get Hobby data per day
+// Disable date selection after today!
 // Colour calendar day based on how many Hobbies you checkmarked that day (Blank to Very Saturated)
 
 </script>
@@ -43,6 +49,7 @@ export default {
       active-view="month"
       :disable-views="['years', 'year', 'week', 'day']"
       :events="events"
+      :maxDate="maxDate"
       @cell-click="handleDayClick"
     />
   <div>
@@ -50,5 +57,20 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style>
+.vuecal__cell--has-events {
+  background-color: rgba(0, 123, 255, 0.3);
+}
+.vuecal__cell--has-events:hover {
+  background-color: rgba(0, 123, 255, 0.6);
+}
+.vuecal__cell--selected{
+  background-color: rgba(0, 123, 255, 0.6);
+}
+.vuecal__cell--selected.vuecal__cell--has-events {
+  background-color: rgba(0, 123, 255, 0.6);
+}
+.vuecal__cell-events-count {
+  display: none;
+}
 </style>
