@@ -1,17 +1,14 @@
-<script>
+<script setup>
 
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
+import { useHobbiesStore } from '../stores/hobbies';
 
 export default {
   components: { VueCal },
   data() {
     return {
-      events: [{
-        start: '2025-01-15',
-        end: '2025-01-18',
-        title: 'Tests Tests'
-      }],
+      events: [],
       selectedDate: null,
       selectedHobbies: [],
     };
@@ -24,19 +21,42 @@ export default {
       console.log(this.selectedHobbies);
     },
     getHobbiesByDate(date) {
-      return [];
+      const hobbies = useHobbiesStore();
+      return hobbies.hobbies.filter(hobby =>
+        hobby.hobbyHistory.includes(date)
+      );
     },
+    updateCalendarEvents() {
+      const hobbiesStore = useHobbiesStore();
+      this.events = hobbiesStore.hobbies.flatMap(hobby =>
+        hobby.hobbyHistory.map(date => ({
+          start: date,
+          end: date,
+          title: hobby.text,
+        }))
+      );
+    }
   },
   computed: {
   maxDate () {
-    return new Date().format()
-  }
+    return new Date().format();
+  },
+  watch: {
+    'useHobbiesStore().hobbies': {
+      handler() {
+        this.updateCalendarEvents();
+      },
+      deep: true,
+    },
+  },
+  mounted() {
+    this.updateCalendarEvents();
+  },
 }
 };
 
 // TODO:
 // Get Hobby data per day
-// Disable date selection after today!
 // Colour calendar day based on how many Hobbies you checkmarked that day (Blank to Very Saturated)
 
 </script>
@@ -54,10 +74,15 @@ export default {
     />
   <div>
     <p>{{ selectedDate || "Click on a day to see details."}}</p>
+    <ul>
+      <li v-for="hobby in selectedHobbies" :key="hobby.id">
+        {{ hobby.text }}
+      </li>
+    </ul>
   </div>
 </template>
 
-<style>
+<style> /* Just for testing, move to style files later! */
 .vuecal__cell--has-events {
   background-color: rgba(0, 123, 255, 0.3);
 }
