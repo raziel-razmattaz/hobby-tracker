@@ -1,5 +1,8 @@
 <script setup>
 import HobbyManager from './components/HobbyManager.vue'
+import FrequencyStatistics from './components/FrequencyStatistics.vue';
+import QuickStatistics from './components/QuickStatistics.vue';
+import Calendar from './components/Calendar.vue';
 //TODO:
 // Switch between Statistics and Hobby List in "Main Frame" Component
 </script>
@@ -11,6 +14,9 @@ import HobbyManager from './components/HobbyManager.vue'
     </a>
   </div>
   <HobbyManager/>
+  <FrequencyStatistics/>
+  <QuickStatistics/>
+  <Calendar/>
 </template>
 
 <style scoped>
