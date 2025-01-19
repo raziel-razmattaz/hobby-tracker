@@ -2,58 +2,47 @@
 
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
-export default {
-  components: { VueCal },
-  data() {
-    return {
-      events: [],
-      selectedDate: null,
-      selectedHobbies: [],
-    };
-  },
-  methods: {
-    handleDayClick(date) {
-      this.selectedDate = date.toISOString().split('T')[0];
-      console.log(this.selectedDate);
-      this.selectedHobbies = this.getHobbiesByDate(this.selectedDate);
-      console.log(this.selectedHobbies);
-    },
-    getHobbiesByDate(date) {
-      const hobbies = useHobbiesStore();
-      return hobbies.hobbies.filter(hobby =>
-        hobby.hobbyHistory.includes(date)
-      );
-    },
-    updateCalendarEvents() {
-      const hobbiesStore = useHobbiesStore();
-      this.events = hobbiesStore.hobbies.flatMap(hobby =>
-        hobby.hobbyHistory.map(date => ({
-          start: date,
-          end: date,
-          title: hobby.text,
-        }))
-      );
-    }
-  },
-  computed: {
-  maxDate () {
-    return new Date().format();
-  },
-  watch: {
-    'useHobbiesStore().hobbies': {
-      handler() {
-        this.updateCalendarEvents();
-      },
-      deep: true,
-    },
-  },
-  mounted() {
-    this.updateCalendarEvents();
-  },
-}
+const hobbiesStore = useHobbiesStore();
+
+const events = ref([]);
+const selectedDate = ref(null);
+const selectedHobbies = ref([]);
+
+const maxDate = computed(() => new Date().toISOString().split('T')[0]);
+
+const getHobbiesByDate = (date) => {
+  return hobbiesStore.hobbies.filter(hobby =>
+    hobby.hobbyHistory.includes(date)
+  );
 };
+
+const handleDayClick = (date) => {
+  selectedDate.value = date.toISOString().split('T')[0]; // Format date
+  selectedHobbies.value = getHobbiesByDate(selectedDate.value);
+  console.log(selectedDate.value);
+  console.log(selectedHobbies.values);
+};
+
+const updateCalendarEvents = () => {
+  events.value = hobbiesStore.hobbies.flatMap(hobby =>
+    hobby.hobbyHistory.map(date => ({
+      start: date,
+      end: date,
+      title: hobby.text,
+    }))
+  );
+};
+
+watch(
+  () => hobbiesStore.hobbies,
+  updateCalendarEvents,
+  { deep: true }
+);
+
+onMounted(updateCalendarEvents);
 
 // TODO:
 // Get Hobby data per day
