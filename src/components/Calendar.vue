@@ -20,20 +20,25 @@ const getHobbiesByDate = (date) => {
 };
 
 const handleDayClick = (date) => {
-  selectedDate.value = date.toISOString().split('T')[0]; // Format date
+  selectedDate.value = date.toISOString().split('T')[0];
   selectedHobbies.value = getHobbiesByDate(selectedDate.value);
-  console.log(selectedDate.value);
-  console.log(selectedHobbies.values);
 };
 
 const updateCalendarEvents = () => {
-  events.value = hobbiesStore.hobbies.flatMap(hobby =>
-    hobby.hobbyHistory.map(date => ({
+  const hobbyCountsByDate = new Map();
+  hobbiesStore.hobbies.forEach(hobby => {
+    hobby.hobbyHistory.forEach(date => {
+      hobbyCountsByDate.set(date, (hobbyCountsByDate.get(date) || 0) + 1);
+    });
+  });
+  events.value = Array.from(hobbyCountsByDate.entries()).map(([date, count]) => {
+    return {
       start: date,
       end: date,
-      title: hobby.text,
-    }))
-  );
+      title: `${count} hobbies`,
+      class: `heatmap-${Math.min(Math.ceil(count), 5)}`
+    };
+  });
 };
 
 watch(
@@ -43,10 +48,6 @@ watch(
 );
 
 onMounted(updateCalendarEvents);
-
-// TODO:
-// Get Hobby data per day
-// Colour calendar day based on how many Hobbies you checkmarked that day (Blank to Very Saturated)
 
 </script>
 
@@ -58,6 +59,7 @@ onMounted(updateCalendarEvents);
       active-view="month"
       :disable-views="['years', 'year', 'week', 'day']"
       :events="events"
+      events-on-month-view="short"
       :maxDate="maxDate"
       @cell-click="handleDayClick"
     />
@@ -71,20 +73,61 @@ onMounted(updateCalendarEvents);
   </div>
 </template>
 
-<style> /* Just for testing, move to style files later! */
-.vuecal__cell--has-events {
-  background-color: rgba(0, 123, 255, 0.3);
+<style> /* Just for quick testing, move to style files later! */
+.vuecal__event.heatmap-1 {
+  background-color: rgba(203, 39, 124, 0.2);
 }
-.vuecal__cell--has-events:hover {
-  background-color: rgba(0, 123, 255, 0.6);
+.vuecal__event.heatmap-2 {
+  background-color: rgba(203, 39, 124, 0.4);
+}
+.vuecal__event.heatmap-3 {
+  background-color: rgba(203, 39, 124, 0.6);
+}
+.vuecal__event.heatmap-4 {
+  background-color: rgba(203, 39, 124, 0.8);
+}
+.vuecal__event.heatmap-5 {
+  background-color: rgba(203, 39, 124, 1.0);
+}
+.vuecal__cell {
+  height: auto;
+  min-height: 0;
+  z-index: 2;
+  position: relative;
+}
+.vuecal__cell-content {
+  height: 100%;
+  position: relative;
+  pointer-events: auto;
+}
+.vuecal__event {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  pointer-events: none;
+}
+.vuecal__cell-date {
+  position: relative;
+  z-index: 2;
+}
+.vuecal__event-title {
+  color: transparent;
+}
+.vuecal__cell-content {
+  z-index: 2;
+}
+.vuecal__cell:hover {
+  cursor: pointer;
+}
+/*.vuecal__cell--has-events:hover {
+  background-color: rgb(203, 39, 124);
 }
 .vuecal__cell--selected{
   background-color: rgba(0, 123, 255, 0.6);
 }
 .vuecal__cell--selected.vuecal__cell--has-events {
   background-color: rgba(0, 123, 255, 0.6);
-}
-.vuecal__cell-events-count {
-  display: none;
-}
+}*/
 </style>
