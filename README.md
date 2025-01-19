@@ -36,11 +36,9 @@
 
 1. ~~Basic Hobby Pie Chart Component~~
 
-1. Basic Calender Review Component: Hobby Activity colours days
+1. ~~Basic Calender Review Component: Hobby Activity colours days~~
 
-1. Calculated Statistics: [date] was the Xth time you did [hobby] this month
-
-1. Basic Calendar Review Component: Clicking on Day switches on detailed Day view (list of what you did)
+1. ~~Basic Calendar Review Component: Clicking on Day switches on detailed Day view (list of what you did)~~
 
 1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
 

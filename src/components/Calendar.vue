@@ -5,10 +5,6 @@ import 'vue-cal/dist/vuecal.css';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
-// BUG REPORT:
-// Top row of calendar only (!) returns date shifted one to the left (= previous day) upon click
-// All other rows behave normally. Both event and normal and current and previous month days are affected.
-
 const hobbiesStore = useHobbiesStore();
 
 const events = ref([]);
