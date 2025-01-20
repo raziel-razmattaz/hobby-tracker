@@ -40,15 +40,17 @@
 
 1. ~~Basic Calendar Review Component: Clicking on Day switches on detailed Day view (list of what you did)~~
 
-1. Calculated Statistics: How long has it been since you’ve last done [hobby]?
-
-1. Limit Frequency/Top/Distribution to last 30 days
+1. ~~Calculated Statistics: How long has it been since you’ve last done [hobby]?~~
 
 1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
+
+1. Limit Quick Overview Top/Distribution to data from last 30 days
 
 1. Main Menu Component
 
 1. Ability to switch out Hobby List, Statistics and Suggestions components in Main Menu using Button Toggle
+
+1. Implement full HTML Layout (no styling yet)
 
 1. Figma: Finished UI Design (pastel + goth variants)
 
@@ -63,6 +65,10 @@
 1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
 
 1. Basic About/Intro Component to explain Hobby Tracker Functionality
+
+1. Frequency Component: Filter data between Lifetime, Last Week or Last Month only
+
+1. Frequency Component: Detailed List of Top Performers, Neglected Hobbies and Recent Favourites
 
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 
