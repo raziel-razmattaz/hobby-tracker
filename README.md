@@ -44,6 +44,8 @@
 
 1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
 
+1. Basic Suggestions Component: Re-randomize Hobby suggestions
+
 1. Limit Quick Overview Top/Distribution to data from last 30 days
 
 1. Main Menu Component
@@ -60,7 +62,7 @@
 
 1. Hobby Component: Delete All Hobbies (incl Frequency Data)
 
-1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social)
+1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)
 
 1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
 
