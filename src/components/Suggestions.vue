@@ -16,13 +16,12 @@ function getTimeMessage(hobby) {
 
 function getTimeFrame(hobby) {
   if (!hobby.hobbyHistory || hobby.hobbyHistory.length === 0) return 1;
-  const latestDate = hobby.hobbyHistory.slice().sort().pop();
+  const latest = hobby.hobbyHistory.slice().sort().pop();
+  const [year, month, day] = latest.split('-').map(Number);
+  const latestDate = new Date(year, month - 1, day);
   const today = new Date();
-  const [year, month, day] = latestDate.split('-').map(Number);
-  const firstDate = new Date(year, month - 1, day);
-  firstDate.setHours(0, 0, 0, 0);
-  today.setHours(0, 0, 0, 0);
-  const diffDays = Math.round((firstDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+  today.setHours(0, 0, 0, 0); //to prevent timezone issues
+  const diffDays = Math.round((latestDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
   return diffDays;
 }
 
