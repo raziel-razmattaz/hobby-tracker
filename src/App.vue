@@ -19,7 +19,6 @@
       <li><router-link to="/calendar">Calendar </router-link></li>
       <li><router-link to="/stats">Statistics </router-link></li>
       <li><router-link to="/suggestions">Suggestions </router-link></li>
-      <li><router-link to="/quick">Quick Overview </router-link></li>
     </ul>
   </nav>
     <router-view />

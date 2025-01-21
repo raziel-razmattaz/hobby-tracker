@@ -30,6 +30,14 @@ export const useHobbiesStore = defineStore('hobbies', {
                 this.persistToLocalStorage();
             }
         },
+        getHobbiesLastMonth() {
+            const now = new Date();
+            const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+            return this.hobbies.map((hobby) => ({
+                ...hobby,
+                hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= thirtyDaysAgo),
+            }));
+        },
         persistToLocalStorage() {
             localStorage.setItem("hobbies", JSON.stringify(this.hobbies));
         },
