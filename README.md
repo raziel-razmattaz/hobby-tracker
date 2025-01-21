@@ -48,7 +48,11 @@
 
 1. ~~Ability to switch out Hobby List, Calendar and Statistics components in Main Menu using Button Toggle~~
 
-1. Implement full HTML Layout (no styling yet)
+1. ~~Sort all components into pages~~
+
+1. Refactor Stats Components (esp Donut) for Reusability
+
+1. Stats Component: Add lifetime donut
 
 1. ~~Figma: Finished UI Design~~
 
@@ -56,13 +60,11 @@
 
 1. Statistics Component: Reset All Frequency Data (but not hobbies!)
 
-1. Hobby Component: Delete All Hobbies (incl Frequency Data)
+1. Settings Component: Delete All Hobbies (incl Frequency Data)
 
 1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)
 
 1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
-
-1. Basic About/Intro Component to explain Hobby Tracker Functionality
 
 1. Frequency Component: Filter data between Lifetime, Last Week or Last Month only
 
@@ -70,20 +72,28 @@
 
 1. Suggestions Component: Rethink functionality and place (in the overview, own page? what does it all do etc)
 
+1. Settings Component: Choose different suggestion algorithms (Prioritize forgotten hobbies, encourage short term diversity or default mix)
+
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 
-1. Edit Hobby Title
+1. Settings Component: Toggle notifications
 
-1. Import/Export LocalStorage Save Data
+1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
+
+1. Edit Hobby Title?
+
+1. Settings Component: Import/Export LocalStorage Save Data
 
 1. CSS: Implement UI Design
 
 1. CSS: Ensure responsive UI on Mobile and Desktop
 
-1. CSS: UI Dark and Light Mode Switch
+1. Settings Component: UI Dark and Light Mode Switch
+
+1. Settings Component: High Contrast Toggle
 
 1. Accesibility Check and Fixes
 
 1. Finish Documentation
 
-1. Host Hobby Tracker Free
+1. Host Hobby Tracker somewhere...?

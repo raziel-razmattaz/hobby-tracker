@@ -1,12 +1,15 @@
 <script setup>
-//TODO:
-//Everything
 </script>
 <template>
-  <h4>Visual</h4>
+  <h4>Visuals</h4>
   <li>
     <ul>Theme Toggle</ul>
     <ul>High Contrast Mode</ul>
+  </li>
+  <h4>Functionality</h4>
+  <li>
+    <ul>Pick Suggestion Behaviour</ul>
+    <ul>Toggle Notifications</ul>
   </li>
   <h4>Data</h4>
   <li>
