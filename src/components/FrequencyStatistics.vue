@@ -35,11 +35,6 @@ const chartOptions = {
 <template>
   <div>
     <h3>Statistics</h3>
-    <ul>
-      <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
-        {{ hobby.text }} - Done {{ hobby.hobbyHistory.length }} times
-      </li>
-    </ul>
     <div style="width: 400px">
       <FrequencyChart :chartData="chartData" :chartOptions="chartOptions">
         Chart couldn't render
