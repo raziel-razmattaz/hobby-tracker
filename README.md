@@ -42,19 +42,15 @@
 
 1. ~~Calculated Statistics: How long has it been since you’ve last done [hobby]?~~
 
-1. Basic Suggestions Component: Highlight up to 3 neglected hobbies (or random, if no data)
-
-1. Basic Suggestions Component: Re-randomize Hobby suggestions
-
 1. Limit Quick Overview Top/Distribution to data from last 30 days
 
 1. Main Menu Component
 
-1. Ability to switch out Hobby List, Statistics and Suggestions components in Main Menu using Button Toggle
+1. Ability to switch out Hobby List, Calendar and Statistics components in Main Menu using Button Toggle
 
 1. Implement full HTML Layout (no styling yet)
 
-1. Figma: Finished UI Design (pastel + goth variants)
+1. ~~Figma: Finished UI Design~~
 
 ## Also Must-Haves (but only after the top ones are done)
 
@@ -71,6 +67,8 @@
 1. Frequency Component: Filter data between Lifetime, Last Week or Last Month only
 
 1. Frequency Component: Detailed List of Top Performers, Neglected Hobbies and Recent Favourites
+
+1. Suggestions Component: Rethink functionality and place (in the overview, own page? what does it all do etc)
 
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 
