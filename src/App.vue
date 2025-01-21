@@ -4,34 +4,28 @@ import FrequencyStatistics from './components/FrequencyStatistics.vue';
 import QuickStatistics from './components/QuickStatistics.vue';
 import Calendar from './components/Calendar.vue';
 import Suggestions from './components/Suggestions.vue';
-//TODO:
-// Switch between Statistics and Hobby List in "Main Frame" Component
+
+// TODO:
+// install vue-router
+// define routes in router/index.js
+// include router in main app.vue
+// add nav bar to app.vue with router
+// highlight currently active route in nav
+// basic html layout (what goes where in relation to what etc) for all routed components
+
+// Router Screens:
+// Hobby Manager + Quick Statistics (limit to last 30 days)
+// Calendar + Detailed Day View (show empty before click)
+// Lifetime Frequency Chart + Lifetime Donut
+// Suggestions (empty for now)
+// Settings (simple lists with setting ideas for now)
+
 </script>
 
 <template>
-  <div>
-    <a href="" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-  </div>
   <HobbyManager/>
   <FrequencyStatistics/>
   <QuickStatistics/>
   <Calendar/>
   <Suggestions/>
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
