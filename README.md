@@ -44,9 +44,9 @@
 
 1. Limit Quick Overview Top/Distribution to data from last 30 days
 
-1. Main Menu Component
+1. ~~Main Menu Component~~
 
-1. Ability to switch out Hobby List, Calendar and Statistics components in Main Menu using Button Toggle
+1. ~~Ability to switch out Hobby List, Calendar and Statistics components in Main Menu using Button Toggle~~
 
 1. Implement full HTML Layout (no styling yet)
 
