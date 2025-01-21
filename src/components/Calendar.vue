@@ -56,7 +56,7 @@ onMounted(updateCalendarEvents);
 <template>
   <h3>Calendar</h3>
     <vue-cal 
-      style="height: 400px; width: 600px; overflow-x: hidden; position: relative;"
+      style="height: 25rem; width: 37.5rem; overflow-x: hidden; position: relative;"
       hide-view-selector
       active-view="month"
       :disable-views="['years', 'year', 'week', 'day']"

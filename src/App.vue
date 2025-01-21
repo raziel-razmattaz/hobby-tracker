@@ -1,13 +1,11 @@
 <script setup>
 
 // TODO:
+// Chart (esp donut) refactor for reusablity
 // basic html layout (what goes where in relation to what etc) for all routed components
 
 // Router Screens:
-// Hobby Manager + Quick Statistics (limit to last 30 days)
-// Calendar + Detailed Day View (show empty before click)
 // Lifetime Frequency Chart + Lifetime Donut
-// Suggestions (empty for now)
 // Settings (simple lists with setting ideas for now)
 
 </script>

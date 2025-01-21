@@ -42,7 +42,7 @@
 
 1. ~~Calculated Statistics: How long has it been since you’ve last done [hobby]?~~
 
-1. Limit Quick Overview Top/Distribution to data from last 30 days
+1. ~~Limit Quick Overview Top/Distribution to data from last 30 days~~
 
 1. ~~Main Menu Component~~
 

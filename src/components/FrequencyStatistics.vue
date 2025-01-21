@@ -6,7 +6,7 @@ import FrequencyChart from './FrequencyChart.vue';
 
 const hobbies = useHobbiesStore();
 
-const chartData = computed(() => {
+const frequencyChartData = computed(() => {
   const labels = hobbies.hobbies.map(hobby => hobby.text);
   const data = hobbies.hobbies.map(hobby => hobby.hobbyHistory.length);
   return {
@@ -21,7 +21,7 @@ const chartData = computed(() => {
   };
 });
 
-const chartOptions = {
+const frequencyChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -35,8 +35,8 @@ const chartOptions = {
 <template>
   <div>
     <h3>Statistics</h3>
-    <div style="width: 400px">
-      <FrequencyChart :chartData="chartData" :chartOptions="chartOptions">
+    <div style="height: 24rem;width: 37.5rem">
+      <FrequencyChart :chartData="frequencyChartData" :chartOptions="frequencyChartOptions">
         Chart couldn't render
       </FrequencyChart>
     </div>

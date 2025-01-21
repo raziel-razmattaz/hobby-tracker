@@ -4,6 +4,6 @@ import QuickStatistics from './QuickStatistics.vue';
 </script>
 
 <template>
-    <HobbyManager/>
-    <QuickStatistics/>
+  <HobbyManager/>
+  <QuickStatistics/>
 </template>
