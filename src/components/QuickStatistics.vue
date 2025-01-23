@@ -7,8 +7,10 @@ import DistributionChart from './DistributionChart.vue';
 
 const hobbies = useHobbiesStore();
 
+const filteredHobbies = computed(() => hobbies.getHobbiesLastMonth());
+
 const topChartData = computed(() => {
-  const sortedHobbies = [...hobbies.hobbies]
+  const sortedHobbies = filteredHobbies.value
     .filter(hobby => hobby.hobbyHistory.length > 0)
     .sort((a, b) => b.hobbyHistory.length - a.hobbyHistory.length)
     .slice(0, 3);
@@ -44,7 +46,7 @@ const topChartOptions = {
 };
 
 const distributionChartData = computed(() => {
-  const sortedHobbies = hobbies.hobbies.slice().sort((a, b) => a.hobbyHistory.length - b.hobbyHistory.length);
+  const sortedHobbies = filteredHobbies.value.slice().sort((a, b) => a.hobbyHistory.length - b.hobbyHistory.length);
   const labels = sortedHobbies.map(hobby => hobby.text);
   const data = sortedHobbies.map(hobby => hobby.hobbyHistory.length);
 

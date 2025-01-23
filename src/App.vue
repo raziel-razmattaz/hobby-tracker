@@ -1,37 +1,28 @@
 <script setup>
-import HobbyManager from './components/HobbyManager.vue'
-import FrequencyStatistics from './components/FrequencyStatistics.vue';
-import QuickStatistics from './components/QuickStatistics.vue';
-import Calendar from './components/Calendar.vue';
-import Suggestions from './components/Suggestions.vue';
-//TODO:
-// Switch between Statistics and Hobby List in "Main Frame" Component
+
 </script>
 
 <template>
-  <div>
-    <a href="" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-  </div>
-  <HobbyManager/>
-  <FrequencyStatistics/>
-  <QuickStatistics/>
-  <Calendar/>
-  <Suggestions/>
+  <nav>
+    <ul>
+      <li><router-link to="/">Hobbies</router-link></li>
+      <li><router-link to="/calendar">Calendar</router-link></li>
+      <li><router-link to="/stats">Statistics</router-link></li>
+      <li><router-link to="/suggestions">Suggestions</router-link></li>
+      <li><router-link to="/settings">Settings</router-link></li>
+    </ul>
+  </nav>
+    <router-view />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style scoped> /* For testing */
+nav li {
+  display: inline;
+  padding-left: 20px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.router-link-active {
+  color: rgba(245, 40, 145, 0.8);
+  font-weight: bold;
 }
 </style>
