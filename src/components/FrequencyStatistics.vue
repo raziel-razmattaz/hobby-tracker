@@ -3,6 +3,7 @@
 import { computed } from 'vue'
 import { useHobbiesStore } from '../stores/hobbies';
 import FrequencyChart from './FrequencyChart.vue';
+import DistributionChart from './DistributionChart.vue';
 
 const hobbies = useHobbiesStore();
 
@@ -39,6 +40,11 @@ const frequencyChartOptions = {
       <FrequencyChart :chartData="frequencyChartData" :chartOptions="frequencyChartOptions">
         Chart couldn't render
       </FrequencyChart>
+    </div>
+    <div style="width: 400px;">
+      <DistributionChart :chartInput="hobbies.hobbies">
+        Chart couldn't render.
+      </DistributionChart>
     </div>
   </div>
 </template>
