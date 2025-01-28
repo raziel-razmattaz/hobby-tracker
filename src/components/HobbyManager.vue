@@ -7,115 +7,103 @@ import { useHobbiesStore } from '../stores/hobbies';
 const hobbies = useHobbiesStore();
 
 const newHobby = ref('');
+const newCategory = ref(hobbies.categories[0]);
 
-//Example Hobby Data
+// Example Hobbies
 
-/**hobbies.addHobby("Reading VNs");
+/** hobbies.addHobby("Coding", "Stimulating");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2025-01-01",
-    "2025-01-03",
-    "2025-01-05",
-    "2025-01-08",
     "2025-01-15",
-    "2025-01-22",
-    "2025-01-30"
-];
-
-hobbies.addHobby("Origami");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-01",
-    "2024-12-05",
-    "2024-12-12",
-    "2025-01-10",
+    "2025-01-20",
     "2025-01-25"
 ];
 
-hobbies.addHobby("Digital Art");
+hobbies.addHobby("Studying", null);
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-02",
-    "2024-12-08",
-    "2025-01-02",
-    "2025-01-09",
-    "2025-01-18"
+    "2024-12-28",
+    "2025-01-10",
+    "2025-01-18",
+    "2025-01-26"
 ];
 
-hobbies.addHobby("Birdwatching");
+hobbies.addHobby("Reading", "Stimulating");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-03",
-    "2024-12-10",
-    "2024-12-15",
-    "2025-01-05",
-    "2025-01-12",
-    "2025-01-20",
+    "2025-01-02",
+    "2025-01-08",
+    "2025-01-15",
+    "2025-01-23",
     "2025-01-27"
 ];
 
-hobbies.addHobby("Game Coding");
+hobbies.addHobby("Cyber Stalking", "Social");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-01",
-    "2024-12-12",
     "2024-12-25",
-    "2025-01-08",
-    "2025-01-22"
+    "2025-01-01",
+    "2025-01-12"
 ];
 
-hobbies.addHobby("Cooking");
+hobbies.addHobby("Birdwatching", "Physical");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-06",
-    "2024-12-15",
+    "2024-12-30",
     "2025-01-05",
-    "2025-01-06",
-    "2025-01-07",
-    "2025-01-12",
+    "2025-01-14",
+    "2025-01-21"
+];
+
+hobbies.addHobby("Cooking", "Creative");
+hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
+    "2024-12-20",
+    "2024-12-25",
+    "2024-12-28",
+    "2025-01-02",
+    "2025-01-10",
     "2025-01-18"
 ];
 
-hobbies.addHobby("Photography");
+hobbies.addHobby("Music 🎶", "Relaxing");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-01",
-    "2024-12-14",
-    "2024-12-31",
-    "2025-01-10",
-    "2025-01-20"
+    "2024-12-26",
+    "2025-01-06",
+    "2025-01-13",
+    "2025-01-20",
+    "2025-01-26"
 ];
 
-hobbies.addHobby("Writing");
+hobbies.addHobby("Photography", "Stimulating");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2025-01-01",
-    "2025-01-03",
-    "2025-01-10",
-    "2025-01-17",
+    "2024-12-31",
+    "2025-01-11",
+    "2025-01-21",
     "2025-01-24"
 ];
 
-hobbies.addHobby("Get Bubble Tea");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-05",
-    "2024-12-18",
-    "2025-01-01",
-    "2025-01-02",
-    "2025-01-09",
-    "2025-01-15"
-];
-
-hobbies.addHobby("Running");
+hobbies.addHobby("Digital Art", "Creative");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [];
+
+hobbies.addHobby("Reading VNs", null); // No category
+hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
+    "2025-01-03",
+    "2025-01-09",
+    "2025-01-15",
+    "2025-01-22",
+    "2025-01-28"
+];
 
 hobbies.persistToLocalStorage();*/
 
 function addHobby() {
   if (newHobby.value.trim()) {
-    hobbies.addHobby(newHobby.value)
-    newHobby.value = ''
+    hobbies.addHobby(newHobby.value, newCategory.value);
+    newHobby.value = '';
   }
 }
 
 function removeHobby(hobbyID) {
-  hobbies.removeHobby(hobbyID)
+  hobbies.removeHobby(hobbyID);
 }
 
 function toggleDoneToday(hobbyID) {
-  hobbies.toggleDoneToday(hobbyID)
+  hobbies.toggleDoneToday(hobbyID);
 }
 
 function isDoneToday(hobby) {
@@ -134,12 +122,15 @@ function getLatestDate(hobby) {
 <template>
   <form @submit.prevent="addHobby">
     <input v-model="newHobby" required placeholder="Enter hobby here...">
+    <select v-model="newCategory">
+      <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+    </select>
     <button>+</button>
   </form>
   <ul>
     <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
       <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
-      {{ hobby.text }} 
+      {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
       <span class="date">{{ getLatestDate(hobby) || "Never" }}</span>
       <button @click="removeHobby(hobby.id)">x</button>
     </li>

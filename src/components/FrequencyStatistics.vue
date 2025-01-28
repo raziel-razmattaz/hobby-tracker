@@ -9,16 +9,25 @@ const hobbies = useHobbiesStore();
 const filteredHobbiesWeek = computed(() => hobbies.getHobbiesLastWeek());
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
 const activeView = ref('lifetime');
+const activeCategory = ref('all')
 
 const chartData = computed(() => {
+  let data;
   switch (activeView.value) {
     case 'week':
-      return filteredHobbiesWeek.value;
+      data = filteredHobbiesWeek.value;
+      break;
     case 'month':
-      return filteredHobbiesMonth.value;
+      data = filteredHobbiesMonth.value;
+      break;
     default:
-      return hobbies.hobbies;
+      data = hobbies.hobbies;
+      break;
   }
+  if (activeCategory.value !== 'all') {
+    data = data.filter(hobby => hobby.category === activeCategory.value);
+  }
+  return data;
 });
 
 function removeHobbyHistory() {
@@ -44,6 +53,10 @@ function removeHobbyHistory() {
         Last Week
       </button>
     </div>
+    <select v-model="activeCategory">
+      <option value="all">All Categories</option>
+      <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+    </select>
     <div style="height: 24rem;width: 37.5rem">
       <FrequencyChart :chartInput="chartData">
         Chart couldn't render

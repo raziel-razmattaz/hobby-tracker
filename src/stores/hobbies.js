@@ -1,23 +1,16 @@
 import { defineStore } from "pinia"
 import { v4 as uuidv4 } from "uuid"
 
-//TODO in hobby-store-update:
-//possibly: clean up into pages?
-//add hobby categories
-//allow setting of hobby category when adding hobby
-//allow filtering by hobby category in stats (ie return all "Creative" hobbies)
-//included: refactor analogous to donut chart (ie you only pass the calculated list to frequencychart)
-
 export const useHobbiesStore = defineStore('hobbies', {
     state: () => ({
-        /** @type {{ text: string, id: number, hobbyHistory: string[] }[]} */
+        /** @type {{ text: string, id: number, hobbyHistory: string[], category: string }[]} */
         hobbies: JSON.parse(localStorage.getItem("hobbies")) || [],
-        /** @//type {'all' | 'doneToday' | 'notDoneToday'} */
-        //filter: 'all'
+        /** @type { string[] } */
+        categories: ['Creative', 'Stimulating', 'Relaxing', 'Social', 'Physical'],
     }),
     actions: {
-        addHobby(text) {
-            this.hobbies.push({text, id: uuidv4(), hobbyHistory: []});
+        addHobby(text, category) {
+            this.hobbies.push({text, id: uuidv4(), hobbyHistory: [], category});
             this.persistToLocalStorage();
         },
         removeHobby(hobbyID) {
@@ -61,6 +54,9 @@ export const useHobbiesStore = defineStore('hobbies', {
                 ...hobby,
                 hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= sevenDaysAgo),
             }));
+        },
+        getHobbiesByCategory(category) {
+            return this.hobbies.filter(hobby => hobby.category === category);
         },
         persistToLocalStorage() {
             localStorage.setItem("hobbies", JSON.stringify(this.hobbies));
