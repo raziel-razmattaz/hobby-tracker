@@ -12,11 +12,9 @@
 
 1. ~~Frequency Component: Filter data between Lifetime, Last Week or Last Month only~~
 
-1. Suggestions Component: Rethink functionality and place (in the overview, own page? what does it all do etc)
+1. Suggestions Component: Basic Suggestions Algorithm Implement
 
-1. Suggestions Component: Detailed List of Top Performers, Neglected Hobbies and Recent Favourites
-
-1. Settings Component: Choose different suggestion algorithms (Prioritize long term diversity, encourage short term diversity or default mix)
+1. Suggestions Component: Balance Meter Spider Web Chart for category performance this week
 
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 

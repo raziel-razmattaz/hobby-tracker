@@ -5,7 +5,36 @@ import { useHobbiesStore } from '../stores/hobbies';
 
 const hobbies = useHobbiesStore();
 
-//Revamp later
+//TODO:
+//Hobby Suggestion Roulette:
+  //Suggestions Algorithm based on 3 criteria:
+    //If no hobbies: Suggest adding some on the hobby screen
+    //If <= 3 hobbies: Suggest all of them (+ suggest adding more)
+    //For each hobby: (weight * recency score) + (weight * recent frequency score) + (weight * category balance score)
+    //Then: Sort with top scoring (ie most neglected) hobbies in first
+    //Considerations: normalisations? possibly optimisations...? (unneccessary?)
+//Balance Meter: Chart with hobby category distribution instead of hobbies (spider web chart type?)
+
+//Game Plan:
+//Develop pure recency score algorithm
+//Develop pure frequency score algorithm (focused on last 30 days)
+//Develop pure category balance score algorithm
+//Combine with weighted scoring (incl normalisations?)
+//Sort and pick top three scorers (or random with bias towards top of the list?)
+//Save top three suggestions for today (with date) and access when reloading to avoid recalculation (?)
+//Display top three suggestions with last done X days ago + category
+//Buttons for toggling different weights/preferences in calculating
+//Basic Chart.js Radar Chart
+//Populate Radar Chart with Category Scores
+
+function getSuggestions() {
+  //for each hobby: hobby metrics []
+}
+
+function calculateRecencyScore() {
+  //
+}
+
 function getTimeMessage(hobby) {
   const dayDiff = getTimeFrame(hobby);
   if (dayDiff == 1) return "You haven't tried this one yet.";
@@ -24,14 +53,6 @@ function getTimeFrame(hobby) {
   const diffDays = Math.round((latestDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
   return diffDays;
 }
-
-//TODO:
-//Hobby Roulette: Give three random hobbies, prioritizing neglected hobbies first
-//If no recorded data just give three random hobbies.
-//If no hobbies suggest adding some to receive suggestions
-//Add button to re-randomize
-//Balance Meter: which hobby categories havent been done recently?
-//Highlight Categories: Haven't done in the last 2 weeks | Rediscovered Favourites (recent bout of activity after neglect)
 
 </script>
 
