@@ -2,7 +2,6 @@ import { defineStore } from "pinia"
 import { v4 as uuidv4 } from "uuid"
 
 //TODO in hobby-store-update:
-//add buttons to switch between week, month or lifetime stats
 //possibly: clean up into pages?
 //add hobby categories
 //allow setting of hobby category when adding hobby

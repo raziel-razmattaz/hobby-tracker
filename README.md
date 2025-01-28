@@ -2,19 +2,21 @@
 
 ## Secondary Must-Haves:
 
-1. Statistics Component: Reset All Frequency Data (but not hobbies!)
+1. ~~Statistics Component: Reset All Frequency Data (but not hobbies!)~~
 
-1. Settings Component: Delete All Hobbies (incl Frequency Data)
+1. ~~Settings Component: Delete All Hobbies (incl Frequency Data)~~
 
 1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)
 
 1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
 
-1. Frequency Component: Filter data between Lifetime, Last Week or Last Month only
+1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
 
-1. Frequency Component: Detailed List of Top Performers, Neglected Hobbies and Recent Favourites
+1. ~~Frequency Component: Filter data between Lifetime, Last Week or Last Month only~~
 
 1. Suggestions Component: Rethink functionality and place (in the overview, own page? what does it all do etc)
+
+1. Suggestions Component: Detailed List of Top Performers, Neglected Hobbies and Recent Favourites
 
 1. Settings Component: Choose different suggestion algorithms (Prioritize long term diversity, encourage short term diversity or default mix)
 
