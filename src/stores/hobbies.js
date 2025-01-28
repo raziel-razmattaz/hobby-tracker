@@ -2,10 +2,6 @@ import { defineStore } from "pinia"
 import { v4 as uuidv4 } from "uuid"
 
 //TODO in hobby-store-update:
-//add function to delete all hobby data
-//add delete all data button to settings
-//add function to delete all hobbyhistory data only
-//add delete hobby history button to stats
 //add buttons to switch between week, month or lifetime stats
 //possibly: clean up into pages?
 //add hobby categories
@@ -32,6 +28,11 @@ export const useHobbiesStore = defineStore('hobbies', {
         removeAllHobbies() {
             localStorage.removeItem('hobbies');
             this.hobbies = [];
+            this.persistToLocalStorage();
+        },
+        removeHobbyHistory() {
+            this.hobbies.forEach(hobby => { hobby.hobbyHistory = [] });
+            this.persistToLocalStorage();
         },
         toggleDoneToday(hobbyID) {
             const today = new Date().toISOString().split('T')[0];
