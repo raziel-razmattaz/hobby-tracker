@@ -11,76 +11,97 @@ const newHobby = ref('');
 //Example Hobby Data
 
 /**hobbies.addHobby("Reading VNs");
+hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
+    "2025-01-01",
+    "2025-01-03",
+    "2025-01-05",
+    "2025-01-08",
+    "2025-01-15",
+    "2025-01-22",
+    "2025-01-30"
+];
+
 hobbies.addHobby("Origami");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
     "2024-12-01",
     "2024-12-05",
-    "2024-12-10",
-    "2024-12-15",
-    "2024-12-18"
+    "2024-12-12",
+    "2025-01-10",
+    "2025-01-25"
 ];
+
 hobbies.addHobby("Digital Art");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-11-15",
-    "2024-11-20"
+    "2024-12-02",
+    "2024-12-08",
+    "2025-01-02",
+    "2025-01-09",
+    "2025-01-18"
 ];
+
 hobbies.addHobby("Birdwatching");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
     "2024-12-03",
-    "2024-12-08",
+    "2024-12-10",
     "2024-12-15",
-    "2024-12-20",
-    "2024-12-25"
+    "2025-01-05",
+    "2025-01-12",
+    "2025-01-20",
+    "2025-01-27"
 ];
+
 hobbies.addHobby("Game Coding");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-11-01",
-    "2024-11-15",
-    "2024-11-20",
-    "2024-11-30",
-    "2024-12-05",
-    "2024-12-12"
+    "2024-12-01",
+    "2024-12-12",
+    "2024-12-25",
+    "2025-01-08",
+    "2025-01-22"
 ];
-hobbies.addHobby("Gardening");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-10-01",
-    "2024-10-15",
-    "2024-11-01",
-    "2024-11-10"
-];
+
 hobbies.addHobby("Cooking");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-11-02",
-    "2024-11-08",
-    "2024-11-18",
-    "2024-12-01",
-    "2024-12-10",
-    "2024-12-15"
+    "2024-12-06",
+    "2024-12-15",
+    "2025-01-05",
+    "2025-01-06",
+    "2025-01-07",
+    "2025-01-12",
+    "2025-01-18"
 ];
+
 hobbies.addHobby("Photography");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-09-12",
-    "2024-10-10",
-    "2024-11-05",
-    "2024-12-01"
+    "2024-12-01",
+    "2024-12-14",
+    "2024-12-31",
+    "2025-01-10",
+    "2025-01-20"
 ];
-hobbies.addHobby("Knitting");
+
+hobbies.addHobby("Writing");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-10-05",
-    "2024-10-20",
-    "2024-11-05"
+    "2025-01-01",
+    "2025-01-03",
+    "2025-01-10",
+    "2025-01-17",
+    "2025-01-24"
 ];
-hobbies.addHobby("Swimming");
+
+hobbies.addHobby("Get Bubble Tea");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-08-01",
-    "2024-08-10",
-    "2024-08-20",
-    "2024-09-05",
-    "2024-10-15",
-    "2024-11-15",
-    "2024-12-15"
+    "2024-12-05",
+    "2024-12-18",
+    "2025-01-01",
+    "2025-01-02",
+    "2025-01-09",
+    "2025-01-15"
 ];
-hobbies.persistToLocalStorage();//*/
+
+hobbies.addHobby("Running");
+hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [];
+
+hobbies.persistToLocalStorage();*/
 
 function addHobby() {
   if (newHobby.value.trim()) {

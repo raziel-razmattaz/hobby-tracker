@@ -16,7 +16,7 @@
 
 1. Suggestions Component: Rethink functionality and place (in the overview, own page? what does it all do etc)
 
-1. Settings Component: Choose different suggestion algorithms (Prioritize forgotten hobbies, encourage short term diversity or default mix)
+1. Settings Component: Choose different suggestion algorithms (Prioritize long term diversity, encourage short term diversity or default mix)
 
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 

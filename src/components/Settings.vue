@@ -1,5 +1,15 @@
 <script setup>
+
+import { useHobbiesStore } from '../stores/hobbies';
+const hobbies = useHobbiesStore();
+
+function removeAllHobbies() {
+  if (confirm('Are you sure you want to delete all hobby data? This cannot be undone.')) {
+    hobbies.removeAllHobbies();
+  }
+}
 </script>
+
 <template>
   <h4>Visuals</h4>
   <li>
@@ -15,6 +25,8 @@
   <li>
     <ul>Export Data</ul>
     <ul>Import Data</ul>
-    <ul>Reset All Data</ul>
+    <ul>
+      <button @click="removeAllHobbies">Delete all Data</button>
+    </ul>
   </li>
 </template>
