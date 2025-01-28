@@ -31,8 +31,9 @@ const chartData = computed(() => {
       {
         label: 'Hobby Activity',
         data,
-        backgroundColor: 'rgba(245, 40, 145, 0.8)'
-      }
+        backgroundColor: 'rgba(245, 40, 145, 0.8)',
+        maxBarThickness: 60,
+      },
     ]
   };
 });

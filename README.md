@@ -6,11 +6,9 @@
 
 1. ~~Settings Component: Delete All Hobbies (incl Frequency Data)~~
 
-1. Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)
+1. ~~Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)~~
 
-1. Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)
-
-1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
+1. ~~Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)~~
 
 1. ~~Frequency Component: Filter data between Lifetime, Last Week or Last Month only~~
 
@@ -23,6 +21,8 @@
 1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
 
 1. Settings Component: Toggle notifications
+
+1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
 
 1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
