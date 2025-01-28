@@ -3,18 +3,27 @@ import { v4 as uuidv4 } from "uuid"
 
 export const useHobbiesStore = defineStore('hobbies', {
     state: () => ({
-        /** @type {{ text: string, id: number, hobbyHistory: string[] }[]} */
+        /** @type {{ text: string, id: number, hobbyHistory: string[], category: string }[]} */
         hobbies: JSON.parse(localStorage.getItem("hobbies")) || [],
-        /** @//type {'all' | 'doneToday' | 'notDoneToday'} */
-        //filter: 'all'
+        /** @type { string[] } */
+        categories: ['Creative', 'Stimulating', 'Relaxing', 'Social', 'Physical'],
     }),
     actions: {
-        addHobby(text) {
-            this.hobbies.push({text, id: uuidv4(), hobbyHistory: []});
+        addHobby(text, category) {
+            this.hobbies.push({text, id: uuidv4(), hobbyHistory: [], category});
             this.persistToLocalStorage();
         },
         removeHobby(hobbyID) {
             this.hobbies = this.hobbies.filter(hobby => hobby.id !== hobbyID);
+            this.persistToLocalStorage();
+        },
+        removeAllHobbies() {
+            localStorage.removeItem('hobbies');
+            this.hobbies = [];
+            this.persistToLocalStorage();
+        },
+        removeHobbyHistory() {
+            this.hobbies.forEach(hobby => { hobby.hobbyHistory = [] });
             this.persistToLocalStorage();
         },
         toggleDoneToday(hobbyID) {
@@ -29,6 +38,25 @@ export const useHobbiesStore = defineStore('hobbies', {
                 }
                 this.persistToLocalStorage();
             }
+        },
+        getHobbiesLastMonth() {
+            const now = new Date();
+            const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+            return this.hobbies.map((hobby) => ({
+                ...hobby,
+                hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= thirtyDaysAgo),
+            }));
+        },
+        getHobbiesLastWeek() {
+            const now = new Date();
+            const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+            return this.hobbies.map((hobby) => ({
+                ...hobby,
+                hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= sevenDaysAgo),
+            }));
+        },
+        getHobbiesByCategory(category) {
+            return this.hobbies.filter(hobby => hobby.category === category);
         },
         persistToLocalStorage() {
             localStorage.setItem("hobbies", JSON.stringify(this.hobbies));
