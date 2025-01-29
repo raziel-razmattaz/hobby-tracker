@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
-import FrequencyStatistics from "../components/FrequencyStatistics.vue";
-import Suggestions from "../components/Suggestions.vue";
-import Calendar from "../components/Calendar.vue";
-import Settings from "../components/Settings.vue";
+import Home from "../pages/Home.vue";
+import FrequencyStatistics from "../pages/FrequencyStatistics.vue";
+import Suggestions from "../pages/Suggestions.vue";
+import Calendar from "../pages/Calendar.vue";
+import Settings from "../pages/Settings.vue";
 
 const routes = [
     {path: "/", name: "Hobbies", component: Home},
