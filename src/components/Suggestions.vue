@@ -2,6 +2,7 @@
 
 import { computed, ref } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
+import CategoryDistribution from './CategoryDistribution.vue';
 
 const hobbies = useHobbiesStore();
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
@@ -15,14 +16,10 @@ const weightOptions = {
 
 const selectedWeight = ref('balance');
 
-//TODO:
-//Basic Chart.js Radar Chart
-//Populate Radar Chart with Category Scores
-
 // All this math is courtesy of DeepSeek R1 🙏
 const hobbySuggestions = computed(() => {
   const hobbyMetrics = filteredHobbiesMonth.value
-    //.filter(hobby => !isDoneToday(hobby)) //to ensure the suggestion for what to do today is actually useful
+    .filter(hobby => !isDoneToday(hobby)) //to ensure the suggestion for what to do today is actually useful
     .map(hobby => ({...hobby}));
   const weights = weightOptions[selectedWeight.value];
   const categoryActivity = {};
@@ -81,7 +78,7 @@ function getTimeFrame(hobby) {
 
 <template>
   <h3>Suggestions</h3>
-  <label for="weight-selector">Select Weighting:</label>
+  <label for="weight-selector">Select Weighting: </label>
     <select id="weight-selector" v-model="selectedWeight">
       <option value="balance">Balanced</option>
       <option value="categoryDiversity">Category Diversity</option>
@@ -93,4 +90,5 @@ function getTimeFrame(hobby) {
       {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
     </li>
   </ul>
+  <CategoryDistribution/>
 </template>
