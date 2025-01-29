@@ -4,36 +4,47 @@ import { computed } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
 const hobbies = useHobbiesStore();
+const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
+
+const frequencyWeight = 0.4;
+const recencyWeight = 0.4;
+const categoryWeight = 0.2;
 
 //TODO:
-//Hobby Suggestion Roulette:
-  //Suggestions Algorithm based on 3 criteria:
-    //If no hobbies: Suggest adding some on the hobby screen
-    //If <= 3 hobbies: Suggest all of them (+ suggest adding more)
-    //For each hobby: (weight * recency score) + (weight * recent frequency score) + (weight * category balance score)
-    //Then: Sort with top scoring (ie most neglected) hobbies in first
-    //Considerations: normalisations? possibly optimisations...? (unneccessary?)
-//Balance Meter: Chart with hobby category distribution instead of hobbies (spider web chart type?)
-
-//Game Plan:
-//Develop pure recency score algorithm
-//Develop pure frequency score algorithm (focused on last 30 days)
-//Develop pure category balance score algorithm
-//Combine with weighted scoring (incl normalisations?)
-//Sort and pick top three scorers (or random with bias towards top of the list?)
-//Save top three suggestions for today (with date) and access when reloading to avoid recalculation (?)
-//Display top three suggestions with last done X days ago + category
 //Buttons for toggling different weights/preferences in calculating
 //Basic Chart.js Radar Chart
 //Populate Radar Chart with Category Scores
 
-function getSuggestions() {
-  //for each hobby: hobby metrics []
-}
+// All this math is courtesy of DeepSeek R1 🙏
+const hobbySuggestions = computed(() => {
+  const hobbyMetrics = filteredHobbiesMonth.value.map(hobby => ({...hobby}));
+  const categoryActivity = {};
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); //to prevent timezone issues
 
-function calculateRecencyScore() {
-  //
-}
+  hobbyMetrics.forEach(hobby => {
+    hobby.frequency = hobby.hobbyHistory.length;
+    hobby.recency = hobby.hobbyHistory.length 
+      ? Math.min(30, (today - new Date(Math.max(...hobby.hobbyHistory.map(d => new Date(d))))) / (1000 * 60 * 60 * 24)) : 30;
+  });
+
+  hobbyMetrics.forEach(hobby => categoryActivity[hobby.category] = (categoryActivity[hobby.category] || 0) + hobby.frequency);
+  console.log(categoryActivity);
+  const maxCategoryActivity = Math.max(...Object.values(categoryActivity), 1);
+
+  const maxFrequency = Math.max(...hobbyMetrics.map(hobby => hobby.frequency), 1);
+  const maxRecency = Math.max(...hobbyMetrics.map(hobby => hobby.recency), 30);
+
+  hobbyMetrics.forEach(hobby => {
+    const frequencyScore = 1 - (hobby.frequency / maxFrequency);
+    const recencyScore = hobby.recency / maxRecency;
+    const categoryScore = 1 - (categoryActivity[hobby.category] / maxCategoryActivity);
+    hobby.totalScore = frequencyWeight * frequencyScore + recencyWeight * recencyScore + categoryWeight * categoryScore;
+  });
+
+  console.log(hobbyMetrics.sort((a, b) => b.totalScore - a.totalScore));
+  return hobbyMetrics.sort((a, b) => b.totalScore - a.totalScore).slice(0, 3);
+})
 
 function getTimeMessage(hobby) {
   const dayDiff = getTimeFrame(hobby);
@@ -59,8 +70,8 @@ function getTimeFrame(hobby) {
 <template>
   <h3>Suggestions</h3>
   <ul>
-    <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
-      {{ hobby.text }} - {{ getTimeMessage(hobby) }} ({{ hobby.hobbyHistory.length }} total times)
+    <li v-for="hobby in hobbySuggestions" :key="hobby.id">
+      {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
     </li>
   </ul>
 </template>

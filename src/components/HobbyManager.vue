@@ -35,13 +35,6 @@ hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
     "2025-01-27"
 ];
 
-hobbies.addHobby("Cyber Stalking", "Social");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-25",
-    "2025-01-01",
-    "2025-01-12"
-];
-
 hobbies.addHobby("Birdwatching", "Physical");
 hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
     "2024-12-30",
