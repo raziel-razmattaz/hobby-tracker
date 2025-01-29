@@ -2,7 +2,6 @@
 
 import { computed, ref } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
-import CategoryDistribution from './CategoryDistribution.vue';
 
 const hobbies = useHobbiesStore();
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
@@ -77,7 +76,6 @@ function getTimeFrame(hobby) {
 </script>
 
 <template>
-  <h3>Suggestions</h3>
   <label for="weight-selector">Select Weighting: </label>
     <select id="weight-selector" v-model="selectedWeight">
       <option value="balance">Balanced</option>
@@ -90,5 +88,4 @@ function getTimeFrame(hobby) {
       {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
     </li>
   </ul>
-  <CategoryDistribution/>
 </template>
