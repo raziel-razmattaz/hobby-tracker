@@ -16,9 +16,9 @@
 
 1. ~~Suggestions Component: Toggle different weight defaults~~
 
-1. Suggestions Component: Balance Meter Spider Web Chart for category performance this week
+1. ~~Suggestions Component: Balance Meter Spider Web Chart for category performance this week~~
 
-1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”
+1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”?
 
 1. Settings Component: Toggle notifications
 
