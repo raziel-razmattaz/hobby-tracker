@@ -11,9 +11,11 @@ const hobbies = useHobbiesStore();
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
 
 const categoryActivity = computed(() => {
-  const activity = {};
+  const activity = hobbies.categories.reduce((acc, category) => {
+    acc[category] = 0;
+    return acc;
+  }, {});
   filteredHobbiesMonth.value.forEach(hobby => activity[hobby.category] = (activity[hobby.category] || 0) + hobby.hobbyHistory.length);
-  console.log(activity);
   return activity;
 });
 
