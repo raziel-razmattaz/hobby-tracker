@@ -1,23 +1,30 @@
 <script setup>
 
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
 const hobbies = useHobbiesStore();
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
 
-const frequencyWeight = 0.4;
-const recencyWeight = 0.4;
-const categoryWeight = 0.2;
+const weightOptions = {
+  balance: { frequency: 0.33, recency: 0.33, category: 0.33},
+  categoryDiversity: { frequency: 0.3, recency: 0.2, category: 0.5},
+  longDiversity: { frequency: 0.5, recency: 0.3, category: 0.2},
+  shortDiversity: { frequency: 0.3, recency: 0.5, category: 0.2},
+};
+
+const selectedWeight = ref('balance');
 
 //TODO:
-//Buttons for toggling different weights/preferences in calculating
 //Basic Chart.js Radar Chart
 //Populate Radar Chart with Category Scores
 
 // All this math is courtesy of DeepSeek R1 🙏
 const hobbySuggestions = computed(() => {
-  const hobbyMetrics = filteredHobbiesMonth.value.map(hobby => ({...hobby}));
+  const hobbyMetrics = filteredHobbiesMonth.value
+    //.filter(hobby => !isDoneToday(hobby)) //to ensure the suggestion for what to do today is actually useful
+    .map(hobby => ({...hobby}));
+  const weights = weightOptions[selectedWeight.value];
   const categoryActivity = {};
   const today = new Date();
   today.setHours(0, 0, 0, 0); //to prevent timezone issues
@@ -39,12 +46,17 @@ const hobbySuggestions = computed(() => {
     const frequencyScore = 1 - (hobby.frequency / maxFrequency);
     const recencyScore = hobby.recency / maxRecency;
     const categoryScore = 1 - (categoryActivity[hobby.category] / maxCategoryActivity);
-    hobby.totalScore = frequencyWeight * frequencyScore + recencyWeight * recencyScore + categoryWeight * categoryScore;
+    hobby.totalScore = weights.frequency * frequencyScore + weights.recency * recencyScore + weights.category * categoryScore;
   });
 
   console.log(hobbyMetrics.sort((a, b) => b.totalScore - a.totalScore));
   return hobbyMetrics.sort((a, b) => b.totalScore - a.totalScore).slice(0, 3);
 })
+
+function isDoneToday(hobby) {
+  const today = new Date().toISOString().split('T')[0];
+  return hobby.hobbyHistory.includes(today);
+}
 
 function getTimeMessage(hobby) {
   const dayDiff = getTimeFrame(hobby);
@@ -69,6 +81,13 @@ function getTimeFrame(hobby) {
 
 <template>
   <h3>Suggestions</h3>
+  <label for="weight-selector">Select Weighting:</label>
+    <select id="weight-selector" v-model="selectedWeight">
+      <option value="balance">Balanced</option>
+      <option value="categoryDiversity">Category Diversity</option>
+      <option value="shortDiversity">Short Term</option>
+      <option value="longDiversity">Long Term</option>
+    </select>
   <ul>
     <li v-for="hobby in hobbySuggestions" :key="hobby.id">
       {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}

@@ -12,7 +12,9 @@
 
 1. ~~Frequency Component: Filter data between Lifetime, Last Week or Last Month only~~
 
-1. Suggestions Component: Basic Suggestions Algorithm Implement
+1. ~~Suggestions Component: Basic Suggestions Algorithm Implement~~
+
+1. ~~Suggestions Component: Toggle different weight defaults~~
 
 1. Suggestions Component: Balance Meter Spider Web Chart for category performance this week
 
@@ -21,6 +23,8 @@
 1. Settings Component: Toggle notifications
 
 1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
+
+1. Settings Component: Toggle recommendation weights
 
 1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
