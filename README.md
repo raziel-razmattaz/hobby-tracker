@@ -28,6 +28,8 @@
 
 1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
+1. Handle stats/suggestion components if too few or none hobbies
+
 1. Edit Hobby Title?
 
 1. Settings Component: Import/Export LocalStorage Save Data

@@ -1,8 +1,8 @@
 <script setup>
 
 import { useHobbiesStore } from '../stores/hobbies';
-import FrequencyChart from './FrequencyChart.vue';
-import DistributionChart from './DistributionChart.vue';
+import FrequencyChart from '../components/FrequencyChart.vue';
+import DistributionChart from '../components/DistributionChart.vue';
 import { ref, computed } from 'vue';
 
 const hobbies = useHobbiesStore();

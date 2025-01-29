@@ -75,7 +75,7 @@ onMounted(updateCalendarEvents);
   </div>
 </template>
 
-<style> /* Just for quick testing, move to style files later! */
+<style>
 .vuecal__event.heatmap-1 {
   background-color: rgba(203, 39, 124, 0.2);
 }
