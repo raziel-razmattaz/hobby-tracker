@@ -5,17 +5,27 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/">Hobbies</router-link></li>
-      <li><router-link to="/calendar">Calendar</router-link></li>
-      <li><router-link to="/stats">Statistics</router-link></li>
-      <li><router-link to="/suggestions">Suggestions</router-link></li>
-      <li><router-link to="/settings">Settings</router-link></li>
+      <li><router-link to="/">
+        <span class="material-icons">checklist</span>
+      </router-link></li>
+      <li><router-link to="/calendar">
+        <span class="material-icons">calendar_today</span>
+      </router-link></li>
+      <li><router-link to="/stats">
+        <span class="material-icons">bar_chart</span>
+      </router-link></li>
+      <li><router-link to="/suggestions">
+        <span class="material-icons">lightbulb</span>
+      </router-link></li>
+      <li><router-link to="/settings">
+        <span class="material-icons">manage_accounts</span>
+      </router-link></li>
     </ul>
   </nav>
     <router-view />
 </template>
 
-<style scoped> /* For testing */
+<style scoped>
 nav li {
   display: inline;
   padding-left: 20px;
