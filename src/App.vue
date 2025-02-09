@@ -34,6 +34,7 @@ nav {
 
 nav ul {
   background: var(--foreground);
+  padding-left: var(--space-xl);
 }
 
 nav li {
