@@ -21,7 +21,6 @@
   --space-xl: 2.618rem;
   --space-xxl: 4.236rem;
   --space-xxxl: 6.854rem;
-  --navbar-margin-height: calc((var(--space-md) * 2 + 24px) + var(--space-xxl));
 }
 /* Basic Building Blocks */
 
@@ -42,6 +41,7 @@ body {
   background-color: var(--background);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
 }
 
 img, picture, video, canvas, svg {

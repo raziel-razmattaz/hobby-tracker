@@ -30,3 +30,8 @@ function removeAllHobbies() {
     </ul>
   </li>
 </template>
+
+<style scoped>
+/* Style the page fully normally */
+/* Media Query for spacing etc! */
+</style>

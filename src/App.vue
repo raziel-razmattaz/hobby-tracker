@@ -29,9 +29,6 @@
 
 <style scoped>
 nav {
-  position: fixed;
-  top: 0px;
-  left: 0px;
   width: 100%;
 }
 
@@ -58,7 +55,9 @@ nav li a.router-link-active {
 }
 
 main {
-  margin-top: var(--navbar-margin-height);
+  padding-top: var(--space-xxl);
+  overflow-y: scroll;
+  height: calc(100vh - var(--space-xxl));
 }
 
 </style>
