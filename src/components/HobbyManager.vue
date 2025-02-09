@@ -106,7 +106,7 @@ function isDoneToday(hobby) {
 
 function getLatestDate(hobby) {
   if (!hobby.hobbyHistory || hobby.hobbyHistory.length === 0) return null;
-  // just in case the hobbies are ever saved out of order
+  // just in case the hobby histories are ever saved out of order
   return hobby.hobbyHistory.slice().sort().pop();
 }
 
@@ -136,6 +136,8 @@ function getLatestDate(hobby) {
 
 <style scoped>
 
+/* List Element Styling */
+
 li {
   display: flex;
   justify-content: space-between;
@@ -145,7 +147,7 @@ li {
   width: var(--container-sm);
   border-radius: var(--border-radius);
   background: var(--foreground);
-  transition: 0.4s;
+  transition-duration: 0.4s;
 }
 
 .li-left, .li-right {
@@ -165,13 +167,14 @@ li:hover {
 
 li:hover .text-secondary {
   color: var(--text-faded-highlight);
-  transition: inherit;
 }
-
 
 li button {
   color: inherit;
   background: none;
 }
+
+/* Custom Checkbox Styling */
+/*  */
 
 </style>
