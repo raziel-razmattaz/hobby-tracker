@@ -113,6 +113,7 @@ function getLatestDate(hobby) {
 </script>
 
 <template>
+  <h3>Test</h3>
   <form @submit.prevent="addHobby">
     <input v-model="newHobby" required placeholder="Enter hobby here...">
     <select v-model="newCategory">
@@ -121,17 +122,15 @@ function getLatestDate(hobby) {
     <button>+</button>
   </form>
   <ul>
-    <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
+    <li class="m-sm" v-for="hobby in hobbies.hobbies" :key="hobby.id">
       <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
       {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
-      <span class="date">{{ getLatestDate(hobby) || "Never" }}</span>
+      <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
       <button @click="removeHobby(hobby.id)">x</button>
     </li>
   </ul>
 </template>
 
 <style scoped>
-.date {
-  color: #888;
-}
+
 </style>

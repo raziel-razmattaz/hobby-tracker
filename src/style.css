@@ -11,7 +11,23 @@
   --foreground: rgb(52, 52, 52);
   --footer: rgb(15, 15, 15);
   --drop-shadow: rgba(0, 0, 0, 0.25);
+  --transparent: rgba(0, 0, 0, 0.0);
+  --space-xxs: 0.236rem;
+  --space-xs: 0.382rem;
+  --space-sm: 0.618rem;
+  --space-md: 1rem;
+  --space-lg: 1.68rem;
+  --space-xl: 2.618rem;
+  --space-xxl: 4.236rem;
+  --space-xxxl: 6.854rem;
 }
+
+/*
+TODO:
+-- import material icon stuff
+-- nav bar and "main frame" in scoped style section of app.vue
+-- finish up pages in this order(?): settings -> hobby list -> stats -> calendar -> suggestions
+*/
 
 /* Basic Building Blocks */
 
@@ -25,6 +41,7 @@
 
 body {
   font-family: var(--body-font);
+  font-size: var(--space-md);
   line-height: 1.5;
   font-weight: 400;
   color: var(--text);
@@ -57,16 +74,56 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-/* Common Reusables */
+/* Style Utilities */
 
-/* Detailed Commons (ie Buttons, Charts) */
-/* Everything too specific will go in scoped styles!*/
+.highlight {
+  background: var(--highlight);
+}
 
-/*
-TODO:
--- define simple spacing elements for your sizes according to scale (ie .m1 for margin)
--- define common style elements (ie .boxshadow)
--- import material icon stuff
--- nav bar and "main frame"
--- finish up pages in this order: hobby list -> stats -> calendar -> settings -> suggestions
-*/
+.boxshadow {
+  box-shadow: 0px 6px var(--drop-shadow);
+}
+
+.text-secondary {
+  color: var(--text-faded);
+}
+
+/* Margin */
+
+.m-xxs { margin: var(--space-xxs); }
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+.m-xxl { margin: var(--space-xxl); }
+.m-xxxl { margin: var(--space-xxxl); }
+
+/* Padding */
+
+.p-xxs { padding: var(--space-xxs); }
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+.p-xxl { padding: var(--space-xxl); }
+.p-xxxl { padding: var(--space-xxxl); }
+
+/* Common Components (ie Buttons, Charts) */
+
+h3 {
+  font-size: var(--space-md);
+  font-weight: 600;
+}
+ /* Individual buttons are further styled in their respective components */
+button {
+  color: var(--text);
+  border: none;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  color: var(--text-highlight);
+}
+/* Everything more specific will go in scoped styles!*/
