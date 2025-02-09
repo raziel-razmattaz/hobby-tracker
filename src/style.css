@@ -25,7 +25,6 @@
 
 /*
 TODO:
--- import material icon stuff
 -- nav bar and "main frame" in scoped style section of app.vue
 -- finish up pages in this order(?): settings -> hobby list -> stats -> calendar -> suggestions
 */
@@ -87,6 +86,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-secondary {
   color: var(--text-faded);
+}
+
+.material-icons {
+  vertical-align: middle;
 }
 
 /* Margin */

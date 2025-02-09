@@ -4,7 +4,7 @@
 
 <template>
   <nav>
-    <ul>
+    <ul class="boxshadow">
       <li><router-link to="/">
         <span class="material-icons">checklist</span>
       </router-link></li>
@@ -26,13 +26,25 @@
 </template>
 
 <style scoped>
-nav li {
-  display: inline;
-  padding-left: 20px;
+nav ul {
+  background: var(--foreground);
+  margin-bottom: var(--space-xxl);
 }
 
-.router-link-active {
-  color: rgba(245, 40, 145, 0.8);
-  font-weight: bold;
+nav li {
+  display: inline-block;
+  color: var(--text);
 }
+
+nav li a {
+  display: block;
+  padding: var(--space-md);
+  text-decoration: none;
+  color: inherit;
+}
+
+nav li a.router-link-active {
+  background: var(--highlight);
+}
+
 </style>
