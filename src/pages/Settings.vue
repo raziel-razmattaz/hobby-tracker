@@ -32,6 +32,8 @@ function removeAllHobbies() {
 </template>
 
 <style scoped>
-/* Style the page fully normally */
-/* Media Query for spacing etc! */
+/* Style the pages fully normally */
+/* If more common elements move to style.css also */
+/* Add footer in App.Vue */
+/* Adjust Media Queries for Mobile View */
 </style>
