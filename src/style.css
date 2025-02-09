@@ -21,14 +21,8 @@
   --space-xl: 2.618rem;
   --space-xxl: 4.236rem;
   --space-xxxl: 6.854rem;
+  --navbar-margin-height: calc((var(--space-md) * 2 + 24px) + var(--space-xxl));
 }
-
-/*
-TODO:
--- nav bar and "main frame" in scoped style section of app.vue
--- finish up pages in this order(?): settings -> hobby list -> stats -> calendar -> suggestions
-*/
-
 /* Basic Building Blocks */
 
 *, *::before, *::after {

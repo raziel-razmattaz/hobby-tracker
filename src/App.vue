@@ -22,18 +22,28 @@
       </router-link></li>
     </ul>
   </nav>
-    <router-view />
+  <main>
+    <router-view/>
+  </main>
 </template>
 
 <style scoped>
+nav {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+}
+
 nav ul {
   background: var(--foreground);
-  margin-bottom: var(--space-xxl);
 }
 
 nav li {
   display: inline-block;
   color: var(--text);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 nav li a {
@@ -45,6 +55,10 @@ nav li a {
 
 nav li a.router-link-active {
   background: var(--highlight);
+}
+
+main {
+  margin-top: var(--navbar-margin-height);
 }
 
 </style>
