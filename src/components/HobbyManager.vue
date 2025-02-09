@@ -113,7 +113,6 @@ function getLatestDate(hobby) {
 </script>
 
 <template>
-  <h3>Test</h3>
   <form @submit.prevent="addHobby">
     <input v-model="newHobby" required placeholder="Enter hobby here...">
     <select v-model="newCategory">
@@ -122,15 +121,57 @@ function getLatestDate(hobby) {
     <button>+</button>
   </form>
   <ul>
-    <li class="m-sm" v-for="hobby in hobbies.hobbies" :key="hobby.id">
-      <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
-      {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
-      <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
-      <button @click="removeHobby(hobby.id)">x</button>
+    <li class="m-md boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
+      <div class="li-left">
+        <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
+        {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
+      </div>
+      <div class="li-right">
+        <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
+        <button @click="removeHobby(hobby.id)">X</button>
+      </div>
     </li>
   </ul>
 </template>
 
 <style scoped>
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  width: var(--container-sm);
+  border-radius: var(--border-radius);
+  background: var(--foreground);
+  transition: 0.4s;
+}
+
+.li-left, .li-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.li-left {
+  flex-grow: 1;
+}
+
+li:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+}
+
+li:hover .text-secondary {
+  color: var(--text-faded-highlight);
+  transition: inherit;
+}
+
+
+li button {
+  color: inherit;
+  background: none;
+}
 
 </style>
