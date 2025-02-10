@@ -24,6 +24,7 @@
   --space-xxxl: 6.854rem;
   --container-sm: 29.03rem;
   --border-radius: 15px;
+  --border-radius-small: 5px;
 }
 /* Basic Building Blocks */
 
@@ -132,4 +133,30 @@ button {
 button:hover {
   color: var(--text-highlight);
 }
-/* Everything more specific will go in scoped styles!*/
+
+/* Custom Checkbox Styling */
+
+.CheckboxRoot {
+  display: inline-flex;
+  width: var(--space-lg);
+  height: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+}
+
+.CheckboxRoot[data-state="checked"] {
+  color: var(--text);
+  background: var(--highlight);
+}
+
+.CheckboxRoot[data-state="unchecked"] {
+  background: var(--drop-shadow);
+}
+
+.CheckboxIndicator {
+  color: white;
+  font-size: 18px;
+}

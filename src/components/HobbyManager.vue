@@ -1,8 +1,8 @@
 <script setup>
 
 import { ref } from 'vue'
-
 import { useHobbiesStore } from '../stores/hobbies';
+import { CheckboxIndicator, CheckboxRoot } from 'radix-vue';
 
 const hobbies = useHobbiesStore();
 
@@ -110,6 +110,8 @@ function getLatestDate(hobby) {
   return hobby.hobbyHistory.slice().sort().pop();
 }
 
+const checkboxOne = ref(true)
+
 </script>
 
 <template>
@@ -123,7 +125,9 @@ function getLatestDate(hobby) {
   <ul>
     <li class="m-md boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
       <div class="li-left">
-        <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
+        <CheckboxRoot :checked="isDoneToday(hobby)" @update:checked="toggleDoneToday(hobby.id)" class="CheckboxRoot">
+          <CheckboxIndicator class="CheckboxIndicator">✓</CheckboxIndicator>
+        </CheckboxRoot>
         {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
       </div>
       <div class="li-right">
@@ -174,9 +178,6 @@ li button {
   background: none;
 }
 
-/* Custom Checkbox Styling */
-/*  */
-
 /* Input Field Styling */
 
 input[type=text] {
@@ -207,6 +208,9 @@ select {
 option {
   font-family: var(--body-font);
 }
+
+/* Custom Select Styling */
+/* ... */
 
 /* Add Button Styling */
 
