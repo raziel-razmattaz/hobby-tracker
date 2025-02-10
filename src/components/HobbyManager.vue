@@ -116,7 +116,7 @@ const checkboxOne = ref(true)
 
 <template>
   <form @submit.prevent="addHobby">
-    <input v-model="newHobby" type="text" class="boxshadow" required placeholder="Enter hobby here...">
+    <input v-model="newHobby" type="text" class="boxshadow" maxlength="25" placeholder="Enter hobby here...">
     <select v-model="newCategory" class="boxshadow">
       <option class="test" v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
     </select>
@@ -208,9 +208,6 @@ select {
 option {
   font-family: var(--body-font);
 }
-
-/* Custom Select Styling */
-/* ... */
 
 /* Add Button Styling */
 

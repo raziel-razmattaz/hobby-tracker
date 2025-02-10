@@ -145,6 +145,7 @@ button:hover {
   justify-content: center;
   cursor: pointer;
   border-radius: var(--border-radius-small);
+  transition: 0.2s;
 }
 
 .CheckboxRoot[data-state="checked"] {
