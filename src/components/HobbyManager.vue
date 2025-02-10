@@ -115,10 +115,10 @@ function getLatestDate(hobby) {
 <template>
   <form @submit.prevent="addHobby">
     <input v-model="newHobby" type="text" class="boxshadow" required placeholder="Enter hobby here...">
-    <select v-model="newCategory">
-      <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+    <select v-model="newCategory" class="boxshadow">
+      <option class="test" v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
     </select>
-    <button>+</button>
+    <button class="add-button boxshadow">+</button>
   </form>
   <ul>
     <li class="m-md boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
@@ -180,8 +180,6 @@ li button {
 /* Input Field Styling */
 
 input[type=text] {
-  margin: var(--space-md);
-  margin-top: 0px;
   padding: var(--space-xs);
   padding-left: var(--space-sm);
   color: var(--text-faded);
@@ -197,20 +195,26 @@ input[type=text]:focus {
 }
 
 select {
-  margin: var(--space-md);
-  margin-top: 0px;
   padding: var(--space-xs);
+  padding-left: var(--space-sm);
   font-family: var(--body-font);
   color: var(--text);
   border: none;
+  border-radius: var(--border-radius);
   background: var(--foreground);
 }
 
-select, option {
+option {
   font-family: var(--body-font);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+}
+
+/* Add Button Styling */
+
+.add-button {
+  width: var(--space-lg);
+  height: var(--space-lg);
+  border-radius: var(--border-radius);
+  background: var(--foreground);
 }
 
 </style>
