@@ -114,7 +114,7 @@ function getLatestDate(hobby) {
 
 <template>
   <form @submit.prevent="addHobby">
-    <input v-model="newHobby" required placeholder="Enter hobby here...">
+    <input v-model="newHobby" type="text" class="boxshadow" required placeholder="Enter hobby here...">
     <select v-model="newCategory">
       <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
     </select>
@@ -176,5 +176,41 @@ li button {
 
 /* Custom Checkbox Styling */
 /*  */
+
+/* Input Field Styling */
+
+input[type=text] {
+  margin: var(--space-md);
+  margin-top: 0px;
+  padding: var(--space-xs);
+  padding-left: var(--space-sm);
+  color: var(--text-faded);
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--foreground);
+}
+
+input[type=text]:focus {
+  color: var(--text-highlight);
+  outline: none;
+  background: var(--foreground-highlight);
+}
+
+select {
+  margin: var(--space-md);
+  margin-top: 0px;
+  padding: var(--space-xs);
+  font-family: var(--body-font);
+  color: var(--text);
+  border: none;
+  background: var(--foreground);
+}
+
+select, option {
+  font-family: var(--body-font);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
 </style>
