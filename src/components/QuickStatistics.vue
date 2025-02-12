@@ -49,12 +49,13 @@ const topChartOptions = {
 
 <template>
   <div>
-    <h3>Quick Overview</h3>
+    <h3>Your Recent Favourites</h3>
     <div style="width: 400px">
       <TopHobbiesChart :topChartData="topChartData" :topChartOptions="topChartOptions">
         Chart couldn't render.
       </TopHobbiesChart>
     </div>
+    <h3>How You've Been Spending Your Time</h3>
     <div style="width: 400px;">
       <DistributionChart :chartInput="filteredHobbies">
         Chart couldn't render.

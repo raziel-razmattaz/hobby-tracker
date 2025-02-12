@@ -11,17 +11,17 @@ function removeAllHobbies() {
 </script>
 
 <template>
-  <h4>Visuals</h4>
+  <h3>Visuals</h3>
   <li>
     <ul>Theme Toggle</ul>
     <ul>High Contrast Mode</ul>
   </li>
-  <h4>Functionality</h4>
+  <h3>Functionality</h3>
   <li>
     <ul>Pick Suggestion Behaviour</ul>
     <ul>Toggle Notifications</ul>
   </li>
-  <h4>Data</h4>
+  <h3>Data</h3>
   <li>
     <ul>Export Data</ul>
     <ul>Import Data</ul>

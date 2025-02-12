@@ -115,27 +115,29 @@ const checkboxOne = ref(true)
 </script>
 
 <template>
-  <form @submit.prevent="addHobby">
-    <input v-model="newHobby" type="text" class="boxshadow" maxlength="25" placeholder="Enter hobby here...">
-    <select v-model="newCategory" class="boxshadow">
-      <option class="test" v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
-    </select>
-    <button class="add-button boxshadow">+</button>
-  </form>
-  <ul>
-    <li class="m-md boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
-      <div class="li-left">
-        <CheckboxRoot :checked="isDoneToday(hobby)" @update:checked="toggleDoneToday(hobby.id)" class="CheckboxRoot">
-          <CheckboxIndicator class="CheckboxIndicator">✓</CheckboxIndicator>
-        </CheckboxRoot>
-        {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
-      </div>
-      <div class="li-right">
-        <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
-        <button @click="removeHobby(hobby.id)">X</button>
-      </div>
-    </li>
-  </ul>
+  <div>
+    <form @submit.prevent="addHobby">
+      <input v-model="newHobby" type="text" class="boxshadow" maxlength="25" placeholder="Enter hobby here...">
+      <select v-model="newCategory" class="boxshadow">
+        <option class="test" v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+      </select>
+      <button class="add-button boxshadow">+</button>
+    </form>
+    <ul>
+      <li class="boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
+        <div class="li-left">
+          <CheckboxRoot :checked="isDoneToday(hobby)" @update:checked="toggleDoneToday(hobby.id)" class="CheckboxRoot">
+            <CheckboxIndicator class="CheckboxIndicator">✓</CheckboxIndicator>
+          </CheckboxRoot>
+          {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
+        </div>
+        <div class="li-right">
+          <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
+          <button @click="removeHobby(hobby.id)">X</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
@@ -147,6 +149,7 @@ li {
   justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
+  margin-bottom: var(--space-md);
   padding: var(--space-sm) var(--space-md);
   width: var(--container-sm);
   border-radius: var(--border-radius);
