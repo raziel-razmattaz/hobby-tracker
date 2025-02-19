@@ -73,8 +73,8 @@ const chartData = computed(() => {
 const generateColors = (count) => {
   const colors = [];
   for (let i = 0; i < count; i++) {
-    const hue = 360 - (i * 90) / (count - 1);
-    colors.push(`hsla(${hue}, 50%, 45%, 1)`);
+    const hue = 360 - (i * 120) / (count - 1);
+    colors.push(`hsla(${hue}, 50%, 50%, 1)`);
   }
   return colors;
 };
