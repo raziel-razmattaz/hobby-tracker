@@ -57,7 +57,7 @@ function removeHobbyHistory() {
       <option value="all">All Categories</option>
       <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
     </select>
-    <div style="height: 24rem;width: 37.5rem">
+    <div style="height: var(--container-s); width: var(--container-lg)">
       <FrequencyChart :chartInput="chartData">
         Chart couldn't render
       </FrequencyChart>

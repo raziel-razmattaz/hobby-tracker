@@ -7,8 +7,9 @@
   --text-highlight: rgb(30, 30, 30);
   --text-faded: rgba(255, 255, 255, 0.7);
   --text-faded-highlight: rgba(30, 30, 30, 0.7);
+  --text-legend: rgba(255, 255, 255, 0.4);
   --background: rgb(34, 34, 34);
-  --highlight: rgb(238, 66, 128);
+  --highlight: rgb(240, 40, 143);
   --foreground: rgb(52, 52, 52);
   --foreground-highlight: rgb(195, 195, 195);
   --footer: rgb(15, 15, 15);
@@ -22,7 +23,9 @@
   --space-xl: 2.618rem;
   --space-xxl: 4.236rem;
   --space-xxxl: 6.854rem;
+  --container-s: 24.02rem;
   --container-sm: 29.03rem;
+  --container-lg: 37.5rem;
   --border-radius: 15px;
   --border-radius-small: 5px;
 }

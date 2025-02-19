@@ -45,8 +45,20 @@ const chartOptions = ref({
   },
   scales: {
     r: {
+      angleLines: {
+        display: false,
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.12)',
+      },
       ticks: {
         display: false,
+      },
+      pointLabels: {
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
       },
       beginAtZero: true,
     },

@@ -2,7 +2,7 @@
 
 import { computed } from 'vue';
 import { Doughnut } from 'vue-chartjs';
-import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, Interaction } from 'chart.js';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement);
 
@@ -16,18 +16,26 @@ const props = defineProps({
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
+  interaction: {
+    mode: 'nearest',
+    intersect: true,
+  },
   plugins: {
     legend: { 
       display: true,
       position: 'bottom',
       labels: {
         usePointStyle: true,
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
         generateLabels: (chart) => {
           const data = chart.data.datasets[0];
           return chart.data.labels.map((label, i) => ({
             text: `${label} (${data.data[i]})`,
             fillStyle: data.backgroundColor[i],
-            fontColor: 'rgb(96, 96, 96)', //LATER: adjust based on theme
+            fontColor: 'rgba(255, 255, 255, 0.4)',
             pointStyle: 'circle',
             lineWidth: 0,
           }));
@@ -35,6 +43,10 @@ const chartOptions = {
       },
     },
     tooltip: { enabled: false }
+  },
+  hover: {
+    mode: 'nearest',
+    intersect: true,
   },
 };
 
@@ -51,7 +63,7 @@ const chartData = computed(() => {
       {
         data: data,
         backgroundColor: backgroundColors,
-        borderColor: 'rgb(36, 36, 36)', //LATER: change according to theme
+        borderColor: 'rgb(36, 36, 36)',
         borderWidth: 2,
       },
     ],
@@ -62,7 +74,7 @@ const generateColors = (count) => {
   const colors = [];
   for (let i = 0; i < count; i++) {
     const hue = 360 - (i * 90) / (count - 1);
-    colors.push(`hsla(${hue}, 70%, 50%, 0.8)`);
+    colors.push(`hsla(${hue}, 50%, 45%, 1)`);
   }
   return colors;
 };
