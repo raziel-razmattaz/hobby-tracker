@@ -5,6 +5,10 @@ import 'vue-cal/dist/vuecal.css';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
+//TODO:
+//Style Calendar
+//Move on to getting full layout
+
 const hobbiesStore = useHobbiesStore();
 
 const events = ref([]);
@@ -54,7 +58,6 @@ onMounted(updateCalendarEvents);
 </script>
 
 <template>
-  <h3>Calendar</h3>
     <vue-cal 
       style="height: 25rem; width: 37.5rem; overflow-x: hidden; position: relative;"
       hide-view-selector
@@ -76,24 +79,36 @@ onMounted(updateCalendarEvents);
 </template>
 
 <style>
-.vuecal__event.heatmap-1 {
-  background-color: rgba(203, 39, 124, 0.2);
+
+.vuecal__event.heatmap-1 { background-color: rgba(203, 39, 124, 0.2); }
+.vuecal__event.heatmap-2 { background-color: rgba(203, 39, 124, 0.4); }
+.vuecal__event.heatmap-3 { background-color: rgba(203, 39, 124, 0.6); }
+.vuecal__event.heatmap-4 { background-color: rgba(203, 39, 124, 0.8); }
+.vuecal__event.heatmap-5 { background-color: rgba(203, 39, 124, 1.0); }
+
+.vuecal {
+  background-color: var(--foreground);
+  box-shadow: 4px 4px var(--drop-shadow);
+  border-radius: var(--border-radius);
 }
-.vuecal__event.heatmap-2 {
-  background-color: rgba(203, 39, 124, 0.4);
+
+.vuecal__weekdays-headings {
+  background: var(--drop-shadow);
+  border: none;
 }
-.vuecal__event.heatmap-3 {
-  background-color: rgba(203, 39, 124, 0.6);
+
+.vuecal__title-bar {
+  background: var(--highlight);
 }
-.vuecal__event.heatmap-4 {
-  background-color: rgba(203, 39, 124, 0.8);
+
+.vuecal__cell::before {
+  border: none;
 }
-.vuecal__event.heatmap-5 {
-  background-color: rgba(203, 39, 124, 1.0);
-}
+
 .vuecal__cell {
   height: auto;
   min-height: 0;
+  border: none;
   z-index: 2;
   position: relative;
 }
@@ -121,13 +136,16 @@ onMounted(updateCalendarEvents);
 .vuecal__cell-content {
   z-index: 2;
 }
-/*.vuecal__cell--has-events:hover {
-  background-color: rgb(203, 39, 124);
+
+.vuecal__cell--today {
+  background-color: var(--highlight);
 }
-.vuecal__cell--selected{
-  background-color: rgba(0, 123, 255, 0.6);
+
+.vuecal__cell--selected {
+  background-color: var(--highlight) !important;
 }
-.vuecal__cell--selected.vuecal__cell--has-events {
-  background-color: rgba(0, 123, 255, 0.6);
-}*/
+
+.vuecal__cell--selected .vuecal__event {
+  background-color: var(--highlight) !important;
+}
 </style>
