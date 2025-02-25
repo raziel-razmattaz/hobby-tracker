@@ -6,8 +6,9 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
 //TODO:
-//Style Calendar
-//Move on to getting full layout
+// Style the secondary day list component
+// Style secondary list component when empty
+// Full Calendar Layout with spacing and everything
 
 const hobbiesStore = useHobbiesStore();
 
@@ -112,11 +113,27 @@ onMounted(updateCalendarEvents);
   z-index: 2;
   position: relative;
 }
+
+.vuecal__cell:hover {
+  background: var(--foreground-highlight);
+  color: var(--text-highlight);
+  transition: 0.4s;
+}
+
+.vuecal__cell:hover .vuecal__event {
+  background: var(--foreground-highlight);
+}
+
+.vuecal__cell--disabled:hover {
+  background: none;
+}
+
 .vuecal__cell-content {
   height: 100%;
   position: relative;
   pointer-events: auto;
 }
+
 .vuecal__event {
   position: absolute;
   top: 0;
@@ -125,14 +142,17 @@ onMounted(updateCalendarEvents);
   border-radius: 0;
   pointer-events: none;
 }
+
 .vuecal__cell-date {
   position: relative;
   pointer-events: none;
   z-index: 2;
 }
+
 .vuecal__event-title {
   color: transparent;
 }
+
 .vuecal__cell-content {
   z-index: 2;
 }
