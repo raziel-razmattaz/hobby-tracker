@@ -78,7 +78,7 @@ onMounted(updateCalendarEvents);
             {{ hobby.text }}
           </li>
         </ul>
-        <p v-else-if="selectedHobbies" class="day-empty">No hobbies recorded.</p>
+        <p v-else-if="selectedDate != null" class="day-empty">No hobbies recorded.</p>
       </div>
     </div>
   </div>
