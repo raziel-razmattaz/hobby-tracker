@@ -1,7 +1,6 @@
 <script setup>
 
 import VueCal from 'vue-cal';
-import 'vue-cal/dist/vuecal.css';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
@@ -61,6 +60,7 @@ onMounted(updateCalendarEvents);
 <template>
     <vue-cal 
       style="height: 25rem; width: 37.5rem; overflow-x: hidden; position: relative;"
+      class="drop-shadow"
       hide-view-selector
       active-view="month"
       :disable-views="['years', 'year', 'week', 'day']"
@@ -79,93 +79,7 @@ onMounted(updateCalendarEvents);
   </div>
 </template>
 
-<style>
+<style scoped>
 
-.vuecal__event.heatmap-1 { background-color: rgba(203, 39, 124, 0.2); }
-.vuecal__event.heatmap-2 { background-color: rgba(203, 39, 124, 0.4); }
-.vuecal__event.heatmap-3 { background-color: rgba(203, 39, 124, 0.6); }
-.vuecal__event.heatmap-4 { background-color: rgba(203, 39, 124, 0.8); }
-.vuecal__event.heatmap-5 { background-color: rgba(203, 39, 124, 1.0); }
 
-.vuecal {
-  background-color: var(--foreground);
-  box-shadow: 4px 4px var(--drop-shadow);
-  border-radius: var(--border-radius);
-}
-
-.vuecal__weekdays-headings {
-  background: var(--drop-shadow);
-  border: none;
-}
-
-.vuecal__title-bar {
-  background: var(--highlight);
-}
-
-.vuecal__cell::before {
-  border: none;
-}
-
-.vuecal__cell {
-  height: auto;
-  min-height: 0;
-  border: none;
-  z-index: 2;
-  position: relative;
-}
-
-.vuecal__cell:hover {
-  background: var(--foreground-highlight);
-  color: var(--text-highlight);
-  transition: 0.4s;
-}
-
-.vuecal__cell:hover .vuecal__event {
-  background: var(--foreground-highlight);
-}
-
-.vuecal__cell--disabled:hover {
-  background: none;
-}
-
-.vuecal__cell-content {
-  height: 100%;
-  position: relative;
-  pointer-events: auto;
-}
-
-.vuecal__event {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  margin: 0;
-  border-radius: 0;
-  pointer-events: none;
-}
-
-.vuecal__cell-date {
-  position: relative;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.vuecal__event-title {
-  color: transparent;
-}
-
-.vuecal__cell-content {
-  z-index: 2;
-}
-
-.vuecal__cell--today {
-  background-color: var(--highlight);
-}
-
-.vuecal__cell--selected {
-  background-color: var(--highlight) !important;
-}
-
-.vuecal__cell--selected .vuecal__event {
-  background-color: var(--highlight) !important;
-}
 </style>
