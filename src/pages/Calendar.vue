@@ -4,11 +4,6 @@ import VueCal from 'vue-cal';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
-//TODO:
-// Style the secondary day list component
-// Style secondary list component when empty
-// Full Calendar Layout with spacing and everything
-
 const hobbiesStore = useHobbiesStore();
 
 const events = ref([]);
