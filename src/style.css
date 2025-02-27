@@ -74,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
   padding: 0;
+  list-style: none;
 }
 
 #root, #__next {
@@ -180,13 +181,12 @@ button:hover {
 }
 
 .vuecal__weekdays-headings {
-  background: var(--drop-shadow);
   border: none;
 }
 
 .vuecal__title-bar {
-  min-height: var(--space-xl) !important;
-  background: var(--highlight) !important;
+  min-height: var(--space-xxl);
+  background: var(--highlight);
   box-shadow: 0px 4px var(--drop-shadow);
 }
 
@@ -250,9 +250,17 @@ button:hover {
 }
 
 .vuecal__cell--selected {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
   background-color: var(--highlight) !important;
 }
 
+.vuecal__cell--selected:hover {
+  color: var(--text);
+}
+
 .vuecal__cell--selected .vuecal__event {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
   background-color: var(--highlight) !important;
 }
