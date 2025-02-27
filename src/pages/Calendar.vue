@@ -78,11 +78,12 @@ onMounted(updateCalendarEvents);
         <div v-else class="day-placeholder p-lg">
           <p>Click on a day to see details.</p>
         </div>
-        <ul>
+        <ul v-if="selectedHobbies.length > 0">
           <li v-for="hobby in selectedHobbies" :key="hobby.id">
             {{ hobby.text }}
           </li>
         </ul>
+        <p v-else-if="selectedHobbies" class="day-empty">No hobbies recorded.</p>
       </div>
     </div>
   </div>
@@ -91,7 +92,7 @@ onMounted(updateCalendarEvents);
 <style scoped>
 
 .day-detail {
-  width: var(--container-s);
+  width: var(--container-xs);
   background: var(--foreground);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -109,6 +110,11 @@ onMounted(updateCalendarEvents);
 
 .day-placeholder {
   color: var(--text-faded);
+}
+
+.day-empty {
+  color: var(--text-faded);
+  margin: var(--space-md) var(--space-lg);
 }
 
 li {
