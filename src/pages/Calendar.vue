@@ -58,28 +58,76 @@ onMounted(updateCalendarEvents);
 </script>
 
 <template>
-    <vue-cal 
-      style="height: 25rem; width: 37.5rem; overflow-x: hidden; position: relative;"
-      class="drop-shadow"
-      hide-view-selector
-      active-view="month"
-      :disable-views="['years', 'year', 'week', 'day']"
-      :events="events"
-      events-on-month-view="short"
-      :maxDate="maxDate"
-      @cell-click="handleDayClick"
-    />
-  <div>
-    <p>{{ selectedDate || "Click on a day to see details."}}</p>
-    <ul>
-      <li v-for="hobby in selectedHobbies" :key="hobby.id">
-        {{ hobby.text }}
-      </li>
-    </ul>
+  <div class="page">
+    <div class="content">
+      <vue-cal 
+        style="height: 25rem; width: 37.5rem; overflow-x: hidden;"
+        class="drop-shadow"
+        hide-view-selector
+        active-view="month"
+        :disable-views="['years', 'year', 'week', 'day']"
+        :events="events"
+        events-on-month-view="short"
+        :maxDate="maxDate"
+        @cell-click="handleDayClick"
+      />
+      <div class="day-detail boxshadow">
+        <div v-if="selectedDate" class="day-title-bar">
+          {{ selectedDate }}
+        </div>
+        <div v-else class="day-placeholder p-lg">
+          <p>Click on a day to see details.</p>
+        </div>
+        <ul>
+          <li v-for="hobby in selectedHobbies" :key="hobby.id">
+            {{ hobby.text }}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 
+.day-detail {
+  width: var(--container-s);
+  background: var(--foreground);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.day-title-bar {
+  display: flex;
+  font-size: 1.3rem;
+  padding-left: var(--space-lg);
+  min-height: var(--space-xxl);
+  align-items: center;
+  background: var(--highlight);
+  box-shadow: 0px 4px var(--drop-shadow);
+}
+
+.day-placeholder {
+  color: var(--text-faded);
+}
+
+li {
+  margin: var(--space-sm) var(--space-lg);
+}
+
+li:first-child {
+  margin-top: var(--space-md);
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-xxl);
+}
 
 </style>
