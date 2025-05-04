@@ -40,8 +40,9 @@ function removeHobbyHistory() {
 
 <template>
   <div>
-    <h3>Statistics</h3>
-    <button @click="removeHobbyHistory">Delete all Frequency Data.</button>
+    <button @click="removeHobbyHistory">
+      <span class="material-icons">delete_forever</span>
+    </button>
     <div class="view-controls">
       <button @click="activeView = 'lifetime'" :class="{ active: activeView === 'lifetime' }">
         Lifetime
@@ -78,7 +79,7 @@ function removeHobbyHistory() {
   justify-content: space-between;
 }
 
-.view-controls button {
+button {
   color: var(--text);
   border-radius: var(--border-radius);
   padding: var(--space-xs) var(--space-md);
@@ -87,7 +88,7 @@ function removeHobbyHistory() {
   box-shadow: 0px 4px var(--drop-shadow);
 }
 
-.view-controls button:hover {
+button:hover {
   color: var(--text-highlight);
   background: var(--foreground-highlight);
   transition-duration: 0.4s;
