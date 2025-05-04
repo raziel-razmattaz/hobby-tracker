@@ -96,6 +96,7 @@ onMounted(updateCalendarEvents);
 .day-title-bar {
   display: flex;
   font-size: 1.3rem;
+  font-weight: 600;
   padding-left: var(--space-lg);
   min-height: var(--space-xxl);
   align-items: center;

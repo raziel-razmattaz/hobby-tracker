@@ -71,9 +71,29 @@ function removeHobbyHistory() {
 </template>
 
 <style scoped>
+
+.view-controls {
+  width: var(--container-xs);
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-controls button {
+  color: var(--text);
+  border-radius: var(--border-radius);
+  padding: var(--space-xs) var(--space-md);
+  background: var(--foreground);
+  transition-duration: 0.4s;
+  box-shadow: 0px 4px var(--drop-shadow);
+}
+
+.view-controls button:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+  transition-duration: 0.4s;
+}
+
 .view-controls button.active {
-  background: rgba(245, 40, 145, 0.8);
-  color: white;
-  border-color: rgba(245, 40, 145, 0.8);
+  background: var(--highlight);
 }
 </style>
