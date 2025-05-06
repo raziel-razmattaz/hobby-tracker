@@ -38,11 +38,11 @@ function removeHobbyHistory() {
 
 </script>
 
-
 <template>
   <div class="page">
     <div class="content">
-      <div>
+      <!-- Left Column -->
+      <div class="left-column">
         <div class="controls-row">
           <div class="view-controls">
             <button @click="activeView = 'lifetime'" :class="{ active: activeView === 'lifetime' }">
@@ -55,10 +55,6 @@ function removeHobbyHistory() {
               Last Week
             </button>
           </div>
-          <select v-model="activeCategory">
-            <option value="all">All Categories</option>
-            <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
-          </select>
         </div>
         <div style="height: var(--container-s); width: var(--container-lg)">
           <FrequencyChart :chartInput="chartData">
@@ -66,15 +62,25 @@ function removeHobbyHistory() {
           </FrequencyChart>
         </div>
       </div>
-      <div class="distribution-section">
-        <div style="width: 400px;">
-          <DistributionChart :chartInput="chartData">
-            Chart couldn't render.
-          </DistributionChart>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <div class="category-select-container">
+          <select v-model="activeCategory">
+            <option value="all">All Categories</option>
+            <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+          </select>
         </div>
-        <button @click="removeHobbyHistory" class="delete-button">
-          <span class="material-icons">delete_forever</span>
-        </button>
+        <div class="distribution-section">
+          <div style="width: 400px;">
+            <DistributionChart :chartInput="chartData">
+              Chart couldn't render.
+            </DistributionChart>
+          </div>
+          <button @click="removeHobbyHistory" class="delete-button">
+            <span class="material-icons">delete_forever</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -91,6 +97,26 @@ function removeHobbyHistory() {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: var(--space-lg);
+  align-items: start;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xxl);
+}
+
+.category-select-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .controls-row {
@@ -104,7 +130,6 @@ function removeHobbyHistory() {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  padding-top: var(--space-xxl);
 }
 
 .delete-button {
