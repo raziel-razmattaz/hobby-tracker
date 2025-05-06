@@ -38,40 +38,80 @@ function removeHobbyHistory() {
 
 </script>
 
+
 <template>
-  <div>
-    <button @click="removeHobbyHistory">
-      <span class="material-icons">delete_forever</span>
-    </button>
-    <div class="view-controls">
-      <button @click="activeView = 'lifetime'" :class="{ active: activeView === 'lifetime' }">
-        Lifetime
-      </button>
-      <button @click="activeView = 'month'" :class="{ active: activeView === 'month' }">
-        Last Month
-      </button>
-      <button @click="activeView = 'week'" :class="{ active: activeView === 'week' }">
-        Last Week
-      </button>
-    </div>
-    <select v-model="activeCategory">
-      <option value="all">All Categories</option>
-      <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
-    </select>
-    <div style="height: var(--container-s); width: var(--container-lg)">
-      <FrequencyChart :chartInput="chartData">
-        Chart couldn't render
-      </FrequencyChart>
-    </div>
-    <div style="width: 400px;">
-      <DistributionChart :chartInput="chartData">
-        Chart couldn't render.
-      </DistributionChart>
+  <div class="page">
+    <div class="content">
+      <div>
+        <div class="controls-row">
+          <div class="view-controls">
+            <button @click="activeView = 'lifetime'" :class="{ active: activeView === 'lifetime' }">
+              Lifetime
+            </button>
+            <button @click="activeView = 'month'" :class="{ active: activeView === 'month' }">
+              Last Month
+            </button>
+            <button @click="activeView = 'week'" :class="{ active: activeView === 'week' }">
+              Last Week
+            </button>
+          </div>
+          <select v-model="activeCategory">
+            <option value="all">All Categories</option>
+            <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
+          </select>
+        </div>
+        <div style="height: var(--container-s); width: var(--container-lg)">
+          <FrequencyChart :chartInput="chartData">
+            Chart couldn't render
+          </FrequencyChart>
+        </div>
+      </div>
+      <div class="distribution-section">
+        <div style="width: 400px;">
+          <DistributionChart :chartInput="chartData">
+            Chart couldn't render.
+          </DistributionChart>
+        </div>
+        <button @click="removeHobbyHistory" class="delete-button">
+          <span class="material-icons">delete_forever</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-lg);
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.distribution-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-top: var(--space-xxl);
+}
+
+.delete-button {
+  color: var(--danger);
+  margin-left: auto;
+  margin-top: var(--space-md);
+}
 
 .view-controls {
   width: var(--container-xs);
