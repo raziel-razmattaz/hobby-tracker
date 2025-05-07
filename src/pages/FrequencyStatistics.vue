@@ -41,7 +41,6 @@ function removeHobbyHistory() {
 <template>
   <div class="page">
     <div class="content">
-      <!-- Left Column -->
       <div class="left-column">
         <div class="controls-row">
           <div class="view-controls">
@@ -56,14 +55,12 @@ function removeHobbyHistory() {
             </button>
           </div>
         </div>
-        <div style="height: var(--container-s); width: var(--container-lg)">
+        <div style="height: var(--container-s); width: var(--container-md)">
           <FrequencyChart :chartInput="chartData">
             Chart couldn't render
           </FrequencyChart>
         </div>
       </div>
-
-      <!-- Right Column -->
       <div class="right-column">
         <div class="category-select-container">
           <select v-model="activeCategory">
@@ -95,7 +92,7 @@ function removeHobbyHistory() {
 
 .content {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: var(--space-lg);
   align-items: start;
 }
