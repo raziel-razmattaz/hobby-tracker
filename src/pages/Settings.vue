@@ -67,10 +67,15 @@ function removeAllHobbies() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   max-width: var(--container-xl);
+  gap: var(--space-md);
   margin: 0 auto;
   padding: 0 var(--space-md);
+}
+
+.page h3 {
+  align-self: flex-start;
+  width: 100%;
 }
 
 .callout ul {
