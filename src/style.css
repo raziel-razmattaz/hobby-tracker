@@ -11,8 +11,9 @@
   --background: rgb(34, 34, 34);
   --highlight: rgb(240, 40, 143);
   --foreground: rgb(52, 52, 52);
+  --foreground-light: rgb(82, 82, 82);
   --foreground-highlight: rgb(195, 195, 195);
-  --danger: rgb(191, 64, 64);
+  --danger: rgb(211, 0, 0);
   --footer: rgb(15, 15, 15);
   --drop-shadow: rgba(0, 0, 0, 0.25);
   --transparent: rgba(0, 0, 0, 0.0);
@@ -28,6 +29,7 @@
   --container-s: 24.02rem;
   --container-sm: 29.03rem;
   --container-lg: 37.5rem;
+  --container-xl: 51.4rem;
   --border-radius: 15px;
   --border-radius-small: 5px;
 }
@@ -76,6 +78,10 @@ h1, h2, h3, h4, h5, h6 {
 
 ul {
   padding: 0;
+  list-style: none;
+}
+
+li {
   list-style: none;
 }
 
