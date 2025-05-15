@@ -58,10 +58,10 @@ export const useHobbiesStore = defineStore('hobbies', {
             });
         },
         getHobbiesLastMonth() { 
-            return this.getHobbiesSince(30);
+            return this.filterHobbiesSince(30);
         },
         getHobbiesLastWeek() {
-            return this.getHobbiesSince(7);
+            return this.filterHobbiesSince(7);
         },
         getHobbiesByCategory(category) {
             return this.hobbies.filter(hobby => hobby.category === category);

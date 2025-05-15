@@ -14,9 +14,6 @@
       <li><router-link to="/stats">
         <span class="material-icons">bar_chart</span>
       </router-link></li>
-      <li><router-link to="/suggestions">
-        <span class="material-icons">lightbulb</span>
-      </router-link></li>
       <li><router-link to="/settings">
         <span class="material-icons">manage_accounts</span>
       </router-link></li>

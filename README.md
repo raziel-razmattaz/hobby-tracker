@@ -28,19 +28,19 @@
 
 1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
-1. Handle stats/suggestion components if too few or none hobbies
+1. About component (w/ repo link) at bottom of settings
 
 1. Edit Hobby Title?
 
 1. Settings Component: Import/Export LocalStorage Save Data
+
+1. Footer Component!
 
 1. CSS: Implement UI Design
 
 1. CSS: Ensure responsive UI on Mobile and Desktop
 
 1. Settings Component: UI Dark and Light Mode Switch
-
-1. Settings Component: High Contrast Toggle
 
 1. Accesibility Check and Fixes
 

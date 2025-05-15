@@ -9,7 +9,6 @@ const routes = [
     {path: "/", name: "Hobbies", component: Home},
     {path: "/calendar", name: "Calendar", component: Calendar},
     {path: "/stats", name: "Frequency Chart", component: FrequencyStatistics},
-    {path: "/suggestions", name: "Suggestions", component: Suggestions},
     {path: "/settings", name: "Settings", component: Settings},
 ];
 
