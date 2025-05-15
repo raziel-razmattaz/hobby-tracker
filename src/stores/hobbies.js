@@ -44,8 +44,8 @@ export const useHobbiesStore = defineStore('hobbies', {
             cutoff.setDate(cutoff.getDate() - daysAgo);
             cutoff.setHours(0, 0, 0, 0);
             return this.hobbies.map(hobby => {
-                const filteredHistory = (hobby.hobbyHistory || []).filter(date => {
-                    const date = new Date(date);
+                const filteredHistory = (hobby.hobbyHistory || []).filter(dateString => {
+                    const date = new Date(dateString);
                     date.setHours(0, 0, 0, 0);
                     return date >= cutoff;
                 });
