@@ -39,21 +39,29 @@ export const useHobbiesStore = defineStore('hobbies', {
                 this.persistToLocalStorage();
             }
         },
-        getHobbiesLastMonth() {
-            const now = new Date();
-            const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
-            return this.hobbies.map((hobby) => ({
-                ...hobby,
-                hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= thirtyDaysAgo),
-            }));
+        filterHobbiesSince(daysAgo) { //filters hobbyHistory not hobbies! this is for the stats page
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - daysAgo);
+            cutoff.setHours(0, 0, 0, 0);
+            return this.hobbies.map(hobby => {
+                const filteredHistory = (hobby.hobbyHistory || []).filter(date => {
+                    const date = new Date(date);
+                    date.setHours(0, 0, 0, 0);
+                    return date >= cutoff;
+                });
+                return {
+                    text: hobby.text,
+                    id: hobby.id,
+                    category: hobby.category,
+                    hobbyHistory: filteredHistory,
+                };
+            });
+        },
+        getHobbiesLastMonth() { 
+            return this.getHobbiesSince(30);
         },
         getHobbiesLastWeek() {
-            const now = new Date();
-            const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
-            return this.hobbies.map((hobby) => ({
-                ...hobby,
-                hobbyHistory: hobby.hobbyHistory.filter((date) => new Date(date) >= sevenDaysAgo),
-            }));
+            return this.getHobbiesSince(7);
         },
         getHobbiesByCategory(category) {
             return this.hobbies.filter(hobby => hobby.category === category);
