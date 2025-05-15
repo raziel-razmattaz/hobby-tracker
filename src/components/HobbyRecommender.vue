@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
 const hobbies = useHobbiesStore();
-const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
+const allHobbies = computed(() => hobbies.hobbies);
 
 const weightOptions = {
   balance: { frequency: 0.33, recency: 0.33, category: 0.33},
@@ -17,9 +17,10 @@ const selectedWeight = ref('balance');
 
 // All this math is courtesy of DeepSeek R1 🙏
 const hobbySuggestions = computed(() => {
-  const hobbyMetrics = filteredHobbiesMonth.value
+  console.log(allHobbies);
+  const hobbyMetrics = allHobbies.value
     .filter(hobby => !isDoneToday(hobby)) //to ensure the suggestion for what to do today is actually useful
-    .map(hobby => ({...hobby}));
+    .map(hobby => ({...hobby, hobbyHistory: [...hobby.hobbyHistory]}));
   const weights = weightOptions[selectedWeight.value];
   const categoryActivity = {};
   const today = new Date();
@@ -76,16 +77,19 @@ function getTimeFrame(hobby) {
 </script>
 
 <template>
-  <label for="weight-selector">Select Weighting: </label>
-    <select id="weight-selector" v-model="selectedWeight">
-      <option value="balance">Balanced</option>
-      <option value="categoryDiversity">Category Diversity</option>
-      <option value="shortDiversity">Short Term</option>
-      <option value="longDiversity">Long Term</option>
-    </select>
-  <ul>
-    <li v-for="hobby in hobbySuggestions" :key="hobby.id">
-      {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li v-for="hobby in hobbySuggestions" :key="hobby.id">
+        <!-- TODO: if hobby list empty (all hobbies done today), congrats on doing all your hobbies today (if total hobby list > 5) else suggest trying to find more hobbies -->
+        {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
+      </li>
+    </ul>
+    <label for="weight-selector">Select Weighting: </label>
+      <select id="weight-selector" v-model="selectedWeight">
+        <option value="balance">Balanced</option>
+        <option value="categoryDiversity">Category Diversity</option>
+        <option value="shortDiversity">Short Term</option>
+        <option value="longDiversity">Long Term</option>
+      </select>
+  </div>
 </template>
