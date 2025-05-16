@@ -8,15 +8,15 @@ const version = "0.0.8";
       <div class="about-content">
         <div class="about-heading"><h3>About chronoDot</h3></div>
         <div class="about-description">
-          <p>A tiny web app built to help me (and maybe you!) keep track of an ever growing list of interests.</p>
-          <p>If you have a lot of interests you might be familiar with the problem of constantly neglecting at least half of them, focusing on a few at a time. To fight this problem I built this simple hobby tracker.</p>
+          <p>A tiny web app built to help me (and maybe you!) keep track of an ever-growing list of interests.</p>
+          <p>If you have a lot of interests, you might be familiar with the problem of constantly neglecting over half of them, focusing only on a few at a time. To fight this problem I built this simple hobby tracker.</p>
           <p>Unlike with a habit tracker, the goal is not to checkmark everything on schedule, just to track which hobbies you practice each day and visualize your progress over time.</p>
         </div>
       </div>
       <div class="about-content">   
         <div class="about-heading"><h3>Tech Stuff</h3></div>
         <div class="about-description">
-          <p>Built with Vue.js, Chart.js and VueCal. Version {{ version }}. All data is stored exclusively in your browser.</p>
+          <p>Built with Vue.js, Chart.js and VueCal. All data is stored exclusively in your browser. Version {{ version }}.</p>
         </div>
       </div>
       <div class="about-content">   
