@@ -22,7 +22,11 @@
     </nav>
     <main>
       <router-view/>
-      <footer>whatever goes here</footer>
+      <footer>
+        <p>© 2025 chronoDot. A passion project.</p>
+        <p><a href="https://github.com/raziel-razmattaz/hobby-tracker" target="_blank">GitHub</a> | <router-link to="/about">About</router-link></p> 
+        <p>Made with ☕ by raziel-razmattaz.</p>
+      </footer>
     </main>
   </div>
 </template>
@@ -74,6 +78,10 @@ main {
 }
 
 footer {
+  color: var(--text-footer);
+  font-size: smaller;
+  text-align: center;
+  padding-top: var(--space-md);
   margin-top: var(--space-xxl);
   background: var(--footer);
   height: var(--space-xxxl);
