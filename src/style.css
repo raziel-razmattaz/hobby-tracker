@@ -93,6 +93,11 @@ li {
   isolation: isolate;
 }
 
+a {
+  color: var(--highlight);
+  font-weight: 600;
+}
+
 /* Style Utilities */
 
 .highlight {

@@ -6,6 +6,13 @@ import { CheckboxIndicator, CheckboxRoot } from 'radix-vue';
 
 const hobbies = useHobbiesStore();
 
+// TODO:
+// 1. Custom Selector
+// 2. Fix Hobby Manager Bar at Top
+// 3. Footer Content/Style
+// 4. Custom Toggles
+// 5. About Page (linked over footer)
+
 const newHobby = ref('');
 const newCategory = ref(hobbies.categories[0]);
 

@@ -20,7 +20,9 @@
 
 1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
 
-1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
+1. ~~Basic About~~
+
+1. Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
 1. Edit Hobby Title?
 
