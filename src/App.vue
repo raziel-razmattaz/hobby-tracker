@@ -23,7 +23,7 @@
     <main>
       <router-view/>
       <footer>
-        <p>© 2025 chronoDot. A passion project.</p>
+        <p>© 2025 chronoDot. A hobby project.</p>
         <p><a href="https://github.com/raziel-razmattaz/hobby-tracker" target="_blank">GitHub</a> | <router-link to="/about">About</router-link></p> 
         <p>Made with ☕ by raziel-razmattaz.</p>
       </footer>
