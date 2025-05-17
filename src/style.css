@@ -198,32 +198,73 @@ button:hover {
 /* Custom Selector Styling*/
 
 .vue-selector {
-  --vs-border: none;
-  --vs-padding: var(--space-xs) var(--space-md);
+  --vs-font-size: 1rem;
   --vs-border-radius: var(--border-radius);
-  --vs-background-color: var(--foreground);
-  --vs-text-color: var(--text);
-  --vs-outline-width: 0px;
-  --vs-menu-box-shadow: 0px 4px var(--drop-shadow);
-  --vs-width: var(--container-xxs);
-  --vs-menu-height: var(--container-xs);
+  --vs-border-color: transparent;
+  --vs-border-width: 0px;
+  --vs-border-style: solid;
 
-  --vs-option-text-color: var(--text);
-  --vs-option-hover-background-color: var(--foreground-highlight);
-  --vs-option-selected-background-color: var(--highlight);
-  --vs-option-selected-text-color: var(--text);
-  --vs-option-focused-background-color: var(--foreground-highlight);
+  --vs-search-input-bg: var(--foreground);
+  --vs-search-input-color: var(--text);
+  --vs-dropdown-bg: var(--foreground);
+  --vs-dropdown-color: var(--text);
+  --vs-selected-bg: var(--highlight);
+  --vs-selected-color: var(--text);
 
-  --vs-menu-background-color: var(--foreground);
-  --vs-menu-border: none;
-  
-  --vs-indicator-icon-color: var(--text-faded);
+  --vs-dropdown-box-shadow: 0px 4px var(--drop-shadow);
+  --vs-dropdown-min-width: var(--container-xxs);
+  --vs-dropdown-max-height: var(--container-xs);
+
+  --vs-dropdown-option-color: var(--text);
+  --vs-dropdown-option--active-bg: var(--highlight);
+  --vs-dropdown-option--active-color: var(--text);
+  --vs-dropdown-option-bg: var(--foreground);
+  --vs-dropdown-option--deselect-bg: var(--highlight);
+  --vs-dropdown-option--deselect-color: var(--text);
+  --vs-dropdown-option-padding: var(--space-xs) var(--space-md);
+
+  --vs-controls-color: var(--text-faded);
+  --vs-controls-size: 0.75;
 }
 
-.vue-select {
+.v-select {
     min-width: var(--container-xxs);
+    background: var(--foreground);
     border-radius: var(--border-radius);
-    box-shadow: 0px 4px var(--drop-shadow)
+    box-shadow: 0px 4px var(--drop-shadow);
+    padding: var(--space-xs) var(--space-md);
+}
+
+.vs__open-indicator {
+  max-width: none;
+}
+
+.vue-selector .vs__dropdown-menu {
+  margin-top: var(--space-xs);
+  border-radius: var(--border-radius);
+}
+
+.vue-selector .vs__selected {
+  border: none;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.vue-selector .vs__dropdown-toggle {
+  padding: 0;
+}
+
+.vue-selector .vs__dropdown-menu {
+  padding: 0;
+}
+
+.vue-selector .vs__search:focus {
+  flex-grow: 0;
 }
 
 /* Calendar Components */

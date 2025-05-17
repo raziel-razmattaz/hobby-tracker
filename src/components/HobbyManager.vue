@@ -1,14 +1,15 @@
 <script setup>
 
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useHobbiesStore } from '../stores/hobbies';
 import { CheckboxIndicator, CheckboxRoot } from 'radix-vue';
-import VueSelect from "vue3-select-component";
+import 'vue-select/dist/vue-select.css';
+import vSelect from 'vue-select';
 
 const hobbies = useHobbiesStore();
 
 const newHobby = ref('');
-const newCategory = ref(hobbies.categories[0]);
+const newCategory = ref(hobbies.categoryOptions[0].value);
 
 function addHobby() {
   if (newHobby.value.trim()) {
@@ -36,7 +37,6 @@ function getLatestDate(hobby) {
   return hobby.hobbyHistory.slice().sort().pop();
 }
 
-const checkboxOne = ref(true)
 
 </script>
 
@@ -45,13 +45,15 @@ const checkboxOne = ref(true)
   <div>
     <form @submit.prevent="addHobby">
       <input v-model="newHobby" type="text" class="boxshadow" maxlength="25" placeholder="Enter hobby here...">
-      <VueSelect
-        class="vue-selector"
-        v-model="newCategory"
-        :options="hobbies.categoryOptions"
-        :isClearable="false"
-        placeholder="Category"
-      />
+      <v-select
+          class="vue-selector boxshadow"
+          v-model="newCategory"
+          :options="hobbies.categoryOptions"
+          :searchable="false"
+          :clearable="false"
+          label="label"
+          :reduce="option => option.value"
+        />
       <button class="material-icons add-button boxshadow">add</button>
     </form>
     <ul>
