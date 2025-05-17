@@ -77,6 +77,13 @@ const checkboxOne = ref(true)
 
 <style scoped>
 
+form {
+  display: flex;
+  gap: var(--space-md);
+  width: var(--container-sm);
+  margin-bottom: var(--space-md);
+}
+
 /* List Element Styling */
 
 li {
@@ -119,6 +126,8 @@ li button {
 /* Input Field Styling */
 
 input[type=text] {
+  flex: 1;
+  min-width: 0;
   padding: var(--space-sm) var(--space-md);
   color: var(--text-faded);
   border: none;
@@ -153,6 +162,7 @@ option {
 }
 
 .add-button {
+  flex: 0 0 auto;
   padding: var(--space-sm) var(--space-sm);
   border-radius: var(--border-radius);
   background: var(--foreground);
