@@ -75,8 +75,10 @@ const checkboxOne = ref(true)
 
 form {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-md);
-  width: var(--container-sm);
+  width: 100%;
+  max-width: var(--container-sm);
   margin-bottom: var(--space-lg);
 }
 
@@ -84,12 +86,14 @@ form {
 
 li {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
   margin-bottom: var(--space-md);
   padding: var(--space-sm) var(--space-md);
-  width: var(--container-sm);
+  width: 100%;
+  max-width: var(--container-sm);
   border-radius: var(--border-radius);
   background: var(--foreground);
   transition-duration: 0.4s;
@@ -158,6 +162,28 @@ button:hover {
   color: var(--text-highlight);
   background: var(--foreground-highlight);
   transition-duration: 0.4s;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  form {
+    flex-direction: row;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: var(--space-xs) var(--space-md);
+    flex: none;
+  }
+
+  li {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
 }
 
 </style>
