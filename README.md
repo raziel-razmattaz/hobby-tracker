@@ -30,7 +30,9 @@
 
 1. ~~CSS: Implement UI Design~~
 
-1. CSS: Ensure responsive UI on Mobile and Desktop
+1. CSS: Ensure basic responsive UI on Mobile and Desktop
+
+1. CSS: Test and make note of small complaints on mobile and fix!
 
 1. Settings Component: UI Dark and Light Mode Switch
 

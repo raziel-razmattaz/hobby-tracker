@@ -169,4 +169,14 @@ button:hover {
 .vue-selector {
   --vs-width: auto;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 0 4vw;
+  }
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
 </style>

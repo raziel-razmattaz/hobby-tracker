@@ -142,6 +142,7 @@ li:first-child {
   width: 100%;
   overflow: hidden;
   display: flex;
+  padding-bottom: 4px;
   justify-content: center;
 }
 
