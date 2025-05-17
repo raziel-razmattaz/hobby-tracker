@@ -8,6 +8,15 @@ export const useHobbiesStore = defineStore('hobbies', {
         /** @type { string[] } */
         categories: ['Creative', 'Stimulating', 'Relaxing', 'Social', 'Physical'],
     }),
+    getters: {
+        /** @returns {Array<{label: string, value: string}>} */
+        categoryOptions: (state) => {
+            return state.categories.map(category => ({
+                label: category,
+                value: category
+            }));
+        }
+    },
     actions: {
         addHobby(text, category) {
             this.hobbies.push({text, id: uuidv4(), hobbyHistory: [], category});
