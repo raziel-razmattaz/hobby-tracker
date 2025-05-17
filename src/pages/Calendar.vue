@@ -55,17 +55,19 @@ onMounted(updateCalendarEvents);
 <template>
   <div class="page">
     <div class="content">
-      <vue-cal 
-        style="height: 25rem; width: 37.5rem; overflow-x: hidden;"
-        class="drop-shadow"
-        hide-view-selector
-        active-view="month"
-        :disable-views="['years', 'year', 'week', 'day']"
-        :events="events"
-        events-on-month-view="short"
-        :maxDate="maxDate"
-        @cell-click="handleDayClick"
-      />
+      <div class="calendar-wrapper">
+        <vue-cal 
+          style="height: 25rem; width: 37.5rem; overflow-x: hidden;"
+          class="drop-shadow"
+          hide-view-selector
+          active-view="month"
+          :disable-views="['years', 'year', 'week', 'day']"
+          :events="events"
+          events-on-month-view="short"
+          :maxDate="maxDate"
+          @cell-click="handleDayClick"
+        />
+      </div>
       <div class="day-detail boxshadow">
         <div v-if="selectedDate" class="day-title-bar">
           {{ selectedDate }}
@@ -88,6 +90,7 @@ onMounted(updateCalendarEvents);
 
 .day-detail {
   width: var(--container-xs);
+  min-width: 0;
   background: var(--foreground);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -124,12 +127,51 @@ li:first-child {
 .page {
   display: flex;
   justify-content: center;
+  padding: 0 var(--space-md);
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 37.5rem) minmax(0, var(--container-xs));
   gap: var(--space-xxl);
+  width: 100%;
+  max-width: calc(37.5rem + var(--container-xs) + var(--space-xxl));
+}
+
+.calendar-wrapper {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 16rem);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .day-detail {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+  }
+
+    .day-title-bar {
+    font-size: 1.1rem;
+    min-height: var(--space-xxl);
+  }
+
+  li {
+    margin: var(--space-lg) var(--space-lg);
+  }
 }
 
 </style>
