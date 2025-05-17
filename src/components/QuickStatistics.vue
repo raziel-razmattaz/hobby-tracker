@@ -33,7 +33,7 @@ const topChartData = computed(() => {
 });
 
 const topChartOptions = {
-  responsive: false,
+  responsive: true,
   indexAxis: 'y',
   maintainAspectRatio: false,
   plugins: {
@@ -80,16 +80,27 @@ const topChartOptions = {
 <template>
   <div>
     <h3>Your Recent Favourites</h3>
-    <div style="width: var(--container-s)" class="p-md">
+    <div class="chart-wrapper p-md">
       <TopHobbiesChart :topChartData="topChartData" :topChartOptions="topChartOptions">
         Chart couldn't render.
       </TopHobbiesChart>
     </div>
     <h3>How You've Been Spending Your Time</h3>
-    <div style="width: var(--container-s)" class="p-md">
+    <div class=" chart-wrapper p-md">
       <DistributionChart :chartInput="filteredHobbies">
         Chart couldn't render.
       </DistributionChart>
     </div>
   </div>
 </template>
+
+<style scoped>
+
+@media (max-width: 768px) {
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+</style>

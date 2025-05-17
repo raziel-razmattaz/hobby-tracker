@@ -4,13 +4,14 @@ import { useHobbiesStore } from '../stores/hobbies';
 import FrequencyChart from '../components/FrequencyChart.vue';
 import DistributionChart from '../components/DistributionChart.vue';
 import { ref, computed } from 'vue';
-import VueSelect from "vue3-select-component";
+import 'vue-select/dist/vue-select.css';
+import vSelect from 'vue-select';
 
 const hobbies = useHobbiesStore();
 const filteredHobbiesWeek = computed(() => hobbies.getHobbiesLastWeek());
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
 const activeView = ref('lifetime');
-const activeCategory = ref('all')
+const activeCategory = ref('all');
 
 const extraCategoryOptions = computed(() => [
   { label: 'All Categories', value: 'all' },
@@ -68,11 +69,14 @@ function removeHobbyHistory() {
         </div>
       </div>
       <div class="right-column">
-        <VueSelect
-          class="vue-selector"
+        <v-select
+          class="vue-selector boxshadow"
           v-model="activeCategory"
           :options="extraCategoryOptions"
-          :isClearable="false"
+          :searchable="false"
+          :clearable="false"
+          label="label"
+          :reduce="option => option.value"
         />
         <div class="distribution-section">
           <div style="width: 400px;">
@@ -166,7 +170,13 @@ button:hover {
   background: var(--highlight);
 }
 
-.vue-selector {
-  --vs-width: auto;
+@media (max-width: 768px) {
+  .page {
+    padding: 0 4vw;
+  }
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 }
 </style>

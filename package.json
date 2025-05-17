@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -17,7 +17,7 @@
     "vue-cal": "^4.10.2",
     "vue-chartjs": "^5.3.2",
     "vue-router": "^4.5.0",
-    "vue3-select-component": "^0.11.7"
+    "vue-select": "^4.0.0-beta.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",

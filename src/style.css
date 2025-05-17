@@ -35,6 +35,7 @@
   --border-radius: 15px;
   --border-radius-small: 5px;
 }
+
 /* Basic Building Blocks */
 
 *, *::before, *::after {
@@ -146,7 +147,9 @@ h3 {
   font-size: var(--space-md);
   font-weight: 600;
 }
+
  /* Individual buttons are further styled in their respective components */
+
 button {
   color: var(--text);
   border: none;
@@ -155,6 +158,13 @@ button {
 
 button:hover {
   color: var(--text-highlight);
+}
+
+/* Common Helper Classes */
+
+.chart-wrapper {
+  width: 100%;
+  max-width: var(--container-s)
 }
 
 /* Custom Checkbox Styling */
@@ -188,31 +198,73 @@ button:hover {
 /* Custom Selector Styling*/
 
 .vue-selector {
-  --vs-border: none;
-  --vs-padding: var(--space-xs) var(--space-md);
+  --vs-font-size: 1rem;
   --vs-border-radius: var(--border-radius);
-  --vs-background-color: var(--foreground);
-  --vs-text-color: var(--text);
-  --vs-outline-width: 0px;
-  --vs-menu-box-shadow: 0px 4px var(--drop-shadow);
-  --vs-width: var(--container-xxs);
-  --vs-menu-height: var(--container-xs);
+  --vs-border-color: transparent;
+  --vs-border-width: 0px;
+  --vs-border-style: solid;
 
-  --vs-option-text-color: var(--text);
-  --vs-option-hover-background-color: var(--foreground-highlight);
-  --vs-option-selected-background-color: var(--highlight);
-  --vs-option-selected-text-color: var(--text);
+  --vs-search-input-bg: var(--foreground);
+  --vs-search-input-color: var(--text);
+  --vs-dropdown-bg: var(--foreground);
+  --vs-dropdown-color: var(--text);
+  --vs-selected-bg: var(--highlight);
+  --vs-selected-color: var(--text);
 
-  --vs-menu-background-color: var(--foreground);
-  --vs-menu-border: none;
-  
-  --vs-indicator-icon-color: var(--text-faded);
+  --vs-dropdown-box-shadow: 0px 4px var(--drop-shadow);
+  --vs-dropdown-min-width: var(--container-xxs);
+  --vs-dropdown-max-height: var(--container-xs);
+
+  --vs-dropdown-option-color: var(--text);
+  --vs-dropdown-option--active-bg: var(--highlight);
+  --vs-dropdown-option--active-color: var(--text);
+  --vs-dropdown-option-bg: var(--foreground);
+  --vs-dropdown-option--deselect-bg: var(--highlight);
+  --vs-dropdown-option--deselect-color: var(--text);
+  --vs-dropdown-option-padding: var(--space-xs) var(--space-md);
+
+  --vs-controls-color: var(--text-faded);
+  --vs-controls-size: 0.75;
 }
 
-.vue-select {
+.v-select {
     min-width: var(--container-xxs);
+    background: var(--foreground);
     border-radius: var(--border-radius);
-    box-shadow: 0px 4px var(--drop-shadow)
+    box-shadow: 0px 4px var(--drop-shadow);
+    padding: var(--space-xs) var(--space-md);
+}
+
+.vs__open-indicator {
+  max-width: none;
+}
+
+.vue-selector .vs__dropdown-menu {
+  margin-top: var(--space-xs);
+  border-radius: var(--border-radius);
+}
+
+.vue-selector .vs__selected {
+  border: none;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.vue-selector .vs__dropdown-toggle {
+  padding: 0;
+}
+
+.vue-selector .vs__dropdown-menu {
+  padding: 0;
+}
+
+.vue-selector .vs__search:focus {
+  flex-grow: 0;
 }
 
 /* Calendar Components */
@@ -312,4 +364,20 @@ button:hover {
   outline: 2px solid var(--text);
   outline-offset: -2px;
   background-color: var(--highlight) !important;
+}
+
+/* Mobile-specific */
+
+@media (max-width: 768px) {
+  :root {
+    --space-md: 0.8rem;
+    --space-lg: 1.2rem;
+    --space-xl: 1.8rem;
+    --space-xxl: 2.8rem;
+  }
+
+  body {
+    font-size: 0.9rem;
+  }
+  
 }
