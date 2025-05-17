@@ -8,8 +8,6 @@ import VueSelect from "vue3-select-component";
 const hobbies = useHobbiesStore();
 
 // TODO:
-// 1. Custom Selector
-// 2. Fix Hobby Manager Bar at Top
 // 3. Custom Toggles
 
 const newHobby = ref('');
@@ -54,6 +52,7 @@ const checkboxOne = ref(true)
         class="vue-selector"
         v-model="newCategory"
         :options="hobbies.categoryOptions"
+        :isClearable="false"
         placeholder="Category"
       />
       <button class="material-icons add-button boxshadow">add</button>
@@ -128,7 +127,7 @@ li button {
 input[type=text] {
   flex: 1;
   min-width: 0;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-xs) var(--space-md);
   color: var(--text-faded);
   border: none;
   border-radius: var(--border-radius);
@@ -139,16 +138,6 @@ input[type=text]:focus {
   color: var(--text-highlight);
   outline: none;
   background: var(--foreground-highlight);
-}
-
-select {
-  padding: var(--space-xs);
-  padding-left: var(--space-sm);
-  font-family: var(--body-font);
-  color: var(--text);
-  border: none;
-  border-radius: var(--border-radius);
-  background: var(--foreground);
 }
 
 option {
@@ -163,7 +152,7 @@ option {
 
 .add-button {
   flex: 0 0 auto;
-  padding: var(--space-sm) var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
   border-radius: var(--border-radius);
   background: var(--foreground);
 }

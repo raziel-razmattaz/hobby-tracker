@@ -4,12 +4,18 @@ import { useHobbiesStore } from '../stores/hobbies';
 import FrequencyChart from '../components/FrequencyChart.vue';
 import DistributionChart from '../components/DistributionChart.vue';
 import { ref, computed } from 'vue';
+import VueSelect from "vue3-select-component";
 
 const hobbies = useHobbiesStore();
 const filteredHobbiesWeek = computed(() => hobbies.getHobbiesLastWeek());
 const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
 const activeView = ref('lifetime');
 const activeCategory = ref('all')
+
+const extraCategoryOptions = computed(() => [
+  { label: 'All Categories', value: 'all' },
+  ...hobbies.categoryOptions
+]);
 
 const chartData = computed(() => {
   let data;
@@ -62,12 +68,12 @@ function removeHobbyHistory() {
         </div>
       </div>
       <div class="right-column">
-        <div class="category-select-container">
-          <select v-model="activeCategory">
-            <option value="all">All Categories</option>
-            <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
-          </select>
-        </div>
+        <VueSelect
+          class="vue-selector"
+          v-model="activeCategory"
+          :options="extraCategoryOptions"
+          :isClearable="false"
+        />
         <div class="distribution-section">
           <div style="width: 400px;">
             <DistributionChart :chartInput="chartData">
@@ -158,5 +164,9 @@ button:hover {
 
 .view-controls button.active {
   background: var(--highlight);
+}
+
+.vue-selector {
+  --vs-width: auto;
 }
 </style>

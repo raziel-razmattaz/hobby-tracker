@@ -189,19 +189,19 @@ button:hover {
 
 .vue-selector {
   --vs-border: none;
-  --vs-padding: var(--space-sm) var(--space-md);
+  --vs-padding: var(--space-xs) var(--space-md);
   --vs-border-radius: var(--border-radius);
   --vs-background-color: var(--foreground);
   --vs-text-color: var(--text);
   --vs-outline-width: 0px;
   --vs-menu-box-shadow: 0px 4px var(--drop-shadow);
   --vs-width: var(--container-xxs);
+  --vs-menu-height: var(--container-xs);
 
   --vs-option-text-color: var(--text);
   --vs-option-hover-background-color: var(--foreground-highlight);
   --vs-option-selected-background-color: var(--highlight);
   --vs-option-selected-text-color: var(--text);
-  --vs-option-focused-background-color: var(--foreground-highlight);
 
   --vs-menu-background-color: var(--foreground);
   --vs-menu-border: none;
