@@ -56,7 +56,7 @@ const checkboxOne = ref(true)
         :options="hobbies.categoryOptions"
         placeholder="Category"
       />
-      <button class="add-button boxshadow">+</button>
+      <button class="material-icons add-button boxshadow">add</button>
     </form>
     <ul>
       <li class="boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
@@ -68,7 +68,7 @@ const checkboxOne = ref(true)
         </div>
         <div class="li-right">
           <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
-          <button @click="removeHobby(hobby.id)">X</button>
+          <button @click="removeHobby(hobby.id)" class="material-icons delete-button">delete</button>
         </div>
       </li>
     </ul>
@@ -119,8 +119,7 @@ li button {
 /* Input Field Styling */
 
 input[type=text] {
-  padding: var(--space-xs);
-  padding-left: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   color: var(--text-faded);
   border: none;
   border-radius: var(--border-radius);
@@ -147,13 +146,22 @@ option {
   font-family: var(--body-font);
 }
 
-/* Add Button Styling */
+.delete-button:hover {
+  color: var(--danger);
+  background: none;
+  transition: 0.4s;
+}
 
 .add-button {
-  width: var(--space-lg);
-  height: var(--space-lg);
+  padding: var(--space-sm) var(--space-sm);
   border-radius: var(--border-radius);
   background: var(--foreground);
+}
+
+button:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+  transition-duration: 0.4s;
 }
 
 </style>

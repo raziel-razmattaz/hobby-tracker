@@ -26,6 +26,7 @@
   --space-xl: 2.618rem;
   --space-xxl: 4.236rem;
   --space-xxxl: 6.854rem;
+  --container-xxs: 11.89rem;
   --container-xs: 20.14rem;
   --container-s: 24.02rem;
   --container-sm: 29.03rem;
@@ -194,6 +195,7 @@ button:hover {
   --vs-text-color: var(--text);
   --vs-outline-width: 0px;
   --vs-menu-box-shadow: 0px 4px var(--drop-shadow);
+  --vs-width: var(--container-xxs);
 
   --vs-option-text-color: var(--text);
   --vs-option-hover-background-color: var(--foreground-highlight);
@@ -208,9 +210,9 @@ button:hover {
 }
 
 .vue-select {
-  border-radius: var(--border-radius);
+    border-radius: var(--border-radius);
     box-shadow: 0px 4px var(--drop-shadow)
-  }
+}
 
 /* Calendar Components */
 
