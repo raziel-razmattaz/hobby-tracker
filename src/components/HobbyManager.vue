@@ -81,7 +81,7 @@ form {
   display: flex;
   gap: var(--space-md);
   width: var(--container-sm);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 /* List Element Styling */
