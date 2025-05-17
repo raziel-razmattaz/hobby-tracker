@@ -21,7 +21,9 @@
       </ul>
     </nav>
     <main>
-      <router-view/>
+      <div class="content-area">
+        <router-view/>
+      </div>
       <footer>
         <p>© 2025 chronoDot. A hobby project.</p>
         <p><a href="https://github.com/raziel-razmattaz/hobby-tracker" target="_blank">GitHub</a> | <router-link to="/about">About</router-link></p> 
@@ -38,6 +40,12 @@
   flex-direction: column;
   height: 100vh;
   width: 100%;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
@@ -74,10 +82,13 @@ main {
   padding-top: var(--space-xxl);
   overflow-y: scroll;
   flex: 1;
+  display: flex;
+  flex-direction: column;
   min-height: 0%;
 }
 
 footer {
+  flex-shrink: 0;
   color: var(--text-footer);
   font-size: smaller;
   text-align: center;
