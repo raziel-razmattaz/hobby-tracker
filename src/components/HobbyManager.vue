@@ -7,9 +7,6 @@ import VueSelect from "vue3-select-component";
 
 const hobbies = useHobbiesStore();
 
-// TODO:
-// 3. Custom Toggles
-
 const newHobby = ref('');
 const newCategory = ref(hobbies.categories[0]);
 

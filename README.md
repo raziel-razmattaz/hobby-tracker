@@ -28,7 +28,7 @@
 
 1. Settings Component: Import/Export LocalStorage Save Data
 
-1. CSS: Implement UI Design
+1. ~~CSS: Implement UI Design~~
 
 1. CSS: Ensure responsive UI on Mobile and Desktop
 
