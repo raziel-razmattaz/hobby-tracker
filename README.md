@@ -18,29 +18,21 @@
 
 1. ~~Suggestions Component: Balance Meter Spider Web Chart for category performance this week~~
 
-1. Notification upon load i.e. “You haven’t done [hobby] in over 2 weeks, why don’t you try it again?”?
-
-1. Settings Component: Toggle notifications
-
 1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
 
-1. Settings Component: Toggle recommendation weights
+1. ~~Basic About~~
 
-1. Basic About/Intro Component to explain Hobby Tracker Functionality if no Hobbies
-
-1. Handle stats/suggestion components if too few or none hobbies
+1. Intro Component to explain Hobby Tracker Functionality if no Hobbies
 
 1. Edit Hobby Title?
 
 1. Settings Component: Import/Export LocalStorage Save Data
 
-1. CSS: Implement UI Design
+1. ~~CSS: Implement UI Design~~
 
 1. CSS: Ensure responsive UI on Mobile and Desktop
 
 1. Settings Component: UI Dark and Light Mode Switch
-
-1. Settings Component: High Contrast Toggle
 
 1. Accesibility Check and Fixes
 

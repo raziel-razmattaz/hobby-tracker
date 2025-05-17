@@ -1,7 +1,6 @@
 <script setup>
 
 import VueCal from 'vue-cal';
-import 'vue-cal/dist/vuecal.css';
 import { ref, computed, watch, onMounted } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
@@ -54,80 +53,83 @@ onMounted(updateCalendarEvents);
 </script>
 
 <template>
-  <h3>Calendar</h3>
-    <vue-cal 
-      style="height: 25rem; width: 37.5rem; overflow-x: hidden; position: relative;"
-      hide-view-selector
-      active-view="month"
-      :disable-views="['years', 'year', 'week', 'day']"
-      :events="events"
-      events-on-month-view="short"
-      :maxDate="maxDate"
-      @cell-click="handleDayClick"
-    />
-  <div>
-    <p>{{ selectedDate || "Click on a day to see details."}}</p>
-    <ul>
-      <li v-for="hobby in selectedHobbies" :key="hobby.id">
-        {{ hobby.text }}
-      </li>
-    </ul>
+  <div class="page">
+    <div class="content">
+      <vue-cal 
+        style="height: 25rem; width: 37.5rem; overflow-x: hidden;"
+        class="drop-shadow"
+        hide-view-selector
+        active-view="month"
+        :disable-views="['years', 'year', 'week', 'day']"
+        :events="events"
+        events-on-month-view="short"
+        :maxDate="maxDate"
+        @cell-click="handleDayClick"
+      />
+      <div class="day-detail boxshadow">
+        <div v-if="selectedDate" class="day-title-bar">
+          {{ selectedDate }}
+        </div>
+        <div v-else class="day-placeholder p-lg">
+          <p>Click on a day to see details.</p>
+        </div>
+        <ul v-if="selectedHobbies.length > 0">
+          <li v-for="hobby in selectedHobbies" :key="hobby.id">
+            {{ hobby.text }}
+          </li>
+        </ul>
+        <p v-else-if="selectedDate != null" class="day-empty">No hobbies recorded.</p>
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-.vuecal__event.heatmap-1 {
-  background-color: rgba(203, 39, 124, 0.2);
+<style scoped>
+
+.day-detail {
+  width: var(--container-xs);
+  background: var(--foreground);
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
-.vuecal__event.heatmap-2 {
-  background-color: rgba(203, 39, 124, 0.4);
+
+.day-title-bar {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding-left: var(--space-lg);
+  min-height: var(--space-xxl);
+  align-items: center;
+  background: var(--highlight);
+  box-shadow: 0px 4px var(--drop-shadow);
 }
-.vuecal__event.heatmap-3 {
-  background-color: rgba(203, 39, 124, 0.6);
+
+.day-placeholder {
+  color: var(--text-faded);
 }
-.vuecal__event.heatmap-4 {
-  background-color: rgba(203, 39, 124, 0.8);
+
+.day-empty {
+  color: var(--text-faded);
+  margin: var(--space-md) var(--space-lg);
 }
-.vuecal__event.heatmap-5 {
-  background-color: rgba(203, 39, 124, 1.0);
+
+li {
+  margin: var(--space-sm) var(--space-lg);
 }
-.vuecal__cell {
-  height: auto;
-  min-height: 0;
-  z-index: 2;
-  position: relative;
+
+li:first-child {
+  margin-top: var(--space-md);
 }
-.vuecal__cell-content {
-  height: 100%;
-  position: relative;
-  pointer-events: auto;
+
+.page {
+  display: flex;
+  justify-content: center;
 }
-.vuecal__event {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  margin: 0;
-  border-radius: 0;
-  pointer-events: none;
+
+.content {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-xxl);
 }
-.vuecal__cell-date {
-  position: relative;
-  pointer-events: none;
-  z-index: 2;
-}
-.vuecal__event-title {
-  color: transparent;
-}
-.vuecal__cell-content {
-  z-index: 2;
-}
-/*.vuecal__cell--has-events:hover {
-  background-color: rgb(203, 39, 124);
-}
-.vuecal__cell--selected{
-  background-color: rgba(0, 123, 255, 0.6);
-}
-.vuecal__cell--selected.vuecal__cell--has-events {
-  background-color: rgba(0, 123, 255, 0.6);
-}*/
+
 </style>

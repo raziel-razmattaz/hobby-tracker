@@ -45,8 +45,20 @@ const chartOptions = ref({
   },
   scales: {
     r: {
+      angleLines: {
+        display: false,
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.12)',
+      },
       ticks: {
         display: false,
+      },
+      pointLabels: {
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
       },
       beginAtZero: true,
     },
@@ -56,8 +68,10 @@ const chartOptions = ref({
 </script>
 
 <template>
-  <h4>Category Distribution Radar Chart</h4>
-  <div style="height: 400px; width: 400px;">
-    <Radar :data="chartData" :options="chartOptions" />
+  <div>
+    <h3>Your Preferences Across Categories</h3>
+    <div style="height: 350px; width: 400px;">
+      <Radar :data="chartData" :options="chartOptions" />
+    </div>
   </div>
 </template>

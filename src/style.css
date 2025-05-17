@@ -1,14 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --body-font: "Inria Sans", serif;
+  --text: rgb(255, 255, 255);
+  --text-highlight: rgb(30, 30, 30);
+  --text-faded: rgba(255, 255, 255, 0.7);
+  --text-footer: rgba(176, 176, 176, 0.7);
+  --text-faded-highlight: rgba(30, 30, 30, 0.7);
+  --text-legend: rgba(255, 255, 255, 0.4);
+  --background: rgb(34, 34, 34);
+  --highlight: rgb(240, 40, 143);
+  --foreground: rgb(52, 52, 52);
+  --foreground-light: rgb(71, 71, 71);
+  --foreground-highlight: rgb(195, 195, 195);
+  --danger: rgb(252, 56, 56);
+  --footer: rgb(15, 15, 15);
+  --drop-shadow: rgba(0, 0, 0, 0.25);
+  --transparent: rgba(0, 0, 0, 0.0);
+  --space-xxs: 0.236rem;
+  --space-xs: 0.382rem;
+  --space-sm: 0.618rem;
+  --space-md: 1rem;
+  --space-lg: 1.68rem;
+  --space-xl: 2.618rem;
+  --space-xxl: 4.236rem;
+  --space-xxxl: 6.854rem;
+  --container-xxs: 11.89rem;
+  --container-xs: 20.14rem;
+  --container-s: 24.02rem;
+  --container-sm: 29.03rem;
+  --container-lg: 37.5rem;
+  --container-xl: 51.4rem;
+  --border-radius: 15px;
+  --border-radius-small: 5px;
+}
+/* Basic Building Blocks */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--space-md);
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+  background-color: var(--background);
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+a {
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+/* Style Utilities */
+
+.highlight {
+  background: var(--highlight);
+}
+
+.boxshadow {
+  box-shadow: 0px 4px var(--drop-shadow);
+}
+
+.text-secondary {
+  color: var(--text-faded);
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+/* Margin */
+
+.m-xxs { margin: var(--space-xxs); }
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+.m-xxl { margin: var(--space-xxl); }
+.m-xxxl { margin: var(--space-xxxl); }
+
+/* Padding */
+
+.p-xxs { padding: var(--space-xxs); }
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+.p-xxl { padding: var(--space-xxl); }
+.p-xxxl { padding: var(--space-xxxl); }
+
+/* Common Components (ie Buttons, Charts) */
+
+h3 {
+  font-size: var(--space-md);
+  font-weight: 600;
+}
+ /* Individual buttons are further styled in their respective components */
+button {
+  color: var(--text);
+  border: none;
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  color: var(--text-highlight);
+}
+
+/* Custom Checkbox Styling */
+
+.CheckboxRoot {
+  display: inline-flex;
+  width: var(--space-lg);
+  height: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--border-radius-small);
+  transition: 0.2s;
+}
+
+.CheckboxRoot[data-state="checked"] {
+  color: var(--text);
+  background: var(--highlight);
+}
+
+.CheckboxRoot[data-state="unchecked"] {
+  background: var(--drop-shadow);
+}
+
+.CheckboxIndicator {
+  color: white;
+  font-size: 18px;
+}
+
+/* Custom Selector Styling*/
+
+.vue-selector {
+  --vs-border: none;
+  --vs-padding: var(--space-xs) var(--space-md);
+  --vs-border-radius: var(--border-radius);
+  --vs-background-color: var(--foreground);
+  --vs-text-color: var(--text);
+  --vs-outline-width: 0px;
+  --vs-menu-box-shadow: 0px 4px var(--drop-shadow);
+  --vs-width: var(--container-xxs);
+  --vs-menu-height: var(--container-xs);
+
+  --vs-option-text-color: var(--text);
+  --vs-option-hover-background-color: var(--foreground-highlight);
+  --vs-option-selected-background-color: var(--highlight);
+  --vs-option-selected-text-color: var(--text);
+
+  --vs-menu-background-color: var(--foreground);
+  --vs-menu-border: none;
+  
+  --vs-indicator-icon-color: var(--text-faded);
+}
+
+.vue-select {
+    min-width: var(--container-xxs);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px var(--drop-shadow)
+}
+
+/* Calendar Components */
+
+.vuecal__event.heatmap-1 { background-color: rgba(203, 39, 124, 0.2); }
+.vuecal__event.heatmap-2 { background-color: rgba(203, 39, 124, 0.4); }
+.vuecal__event.heatmap-3 { background-color: rgba(203, 39, 124, 0.6); }
+.vuecal__event.heatmap-4 { background-color: rgba(203, 39, 124, 0.8); }
+.vuecal__event.heatmap-5 { background-color: rgba(203, 39, 124, 1.0); }
+
+.vuecal {
+  background-color: var(--foreground);
+  box-shadow: 0px 4px var(--drop-shadow);
+  border-radius: var(--border-radius);
+}
+
+.vuecal__weekdays-headings {
+  border: none;
+}
+
+.vuecal__title-bar {
+  min-height: var(--space-xxl);
+  background: var(--highlight);
+  box-shadow: 0px 4px var(--drop-shadow);
+}
+
+.vuecal__cell::before {
+  border: none;
+}
+
+.vuecal__cell {
+  height: auto;
+  min-height: 0;
+  border: none;
+  z-index: 2;
+  position: relative;
+}
+
+.vuecal__cell:hover {
+  background: var(--foreground-highlight);
+  color: var(--text-highlight);
+  transition: 0.4s;
+}
+
+.vuecal__cell:hover .vuecal__event {
+  background: var(--foreground-highlight);
+}
+
+.vuecal__cell--disabled:hover {
+  background: none;
+}
+
+.vuecal__cell-content {
+  height: 100%;
+  position: relative;
+  pointer-events: auto;
+}
+
+.vuecal__event {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.vuecal__cell-date {
+  position: relative;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vuecal__event-title {
+  color: transparent;
+}
+
+.vuecal__cell-content {
+  z-index: 2;
+}
+
+.vuecal__cell--today {
+  background-color: var(--highlight);
+}
+
+.vuecal__cell--selected {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
+  background-color: var(--highlight) !important;
+}
+
+.vuecal__cell--selected:hover {
+  color: var(--text);
+}
+
+.vuecal__cell--selected .vuecal__event {
+  outline: 2px solid var(--text);
+  outline-offset: -2px;
+  background-color: var(--highlight) !important;
 }

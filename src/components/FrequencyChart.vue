@@ -19,6 +19,39 @@ const chartOptions = {
   plugins: {
     legend: { display: false },
     tooltip: { enabled: false }
+  },
+  scales: {
+    x: {
+      beginAtZero: true,
+      grid: {
+        display: false
+      },
+      ticks: {
+        color: 'rgba(255, 255, 255, 0.4)',
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
+      },
+      border: {
+        color: 'rgba(255, 255, 255, 0.2)'
+      }
+    },
+    y: {
+      grid: {
+        color: 'rgba(255, 255, 255, 0.06)'
+      },
+      ticks: {
+        color: 'rgba(255, 255, 255, 0.4)', 
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
+      },
+      border: {
+        color: 'rgba(255, 255, 255, 0.2)'
+      }
+    },
   }
 };
 
@@ -31,7 +64,8 @@ const chartData = computed(() => {
       {
         label: 'Hobby Activity',
         data,
-        backgroundColor: 'rgba(245, 40, 145, 0.8)',
+        backgroundColor: 'rgb(240, 40, 143)',
+        hoverBackgroundColor: 'rgb(255, 0, 132)',
         maxBarThickness: 60,
       },
     ]

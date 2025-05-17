@@ -6,7 +6,25 @@ import CategoryDistribution from '../components/CategoryRadarChart.vue';
 </script>
 
 <template>
-  <h3>Suggestions</h3>
-  <HobbyRecommender/>
-  <CategoryDistribution/>
+  <div class="page">
+    <div class="content">
+      <HobbyRecommender/>
+      <CategoryDistribution/>
+    </div>
+  </div>
 </template>
+
+<style scoped>
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-xxl);
+}
+
+</style>

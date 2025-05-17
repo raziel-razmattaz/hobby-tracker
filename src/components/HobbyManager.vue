@@ -1,88 +1,14 @@
 <script setup>
 
-import { ref } from 'vue'
-
+import { ref, computed } from 'vue'
 import { useHobbiesStore } from '../stores/hobbies';
+import { CheckboxIndicator, CheckboxRoot } from 'radix-vue';
+import VueSelect from "vue3-select-component";
 
 const hobbies = useHobbiesStore();
 
 const newHobby = ref('');
 const newCategory = ref(hobbies.categories[0]);
-
-// Example Hobbies
-
-/** hobbies.addHobby("Coding", "Stimulating");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2025-01-15",
-    "2025-01-20",
-    "2025-01-25"
-];
-
-hobbies.addHobby("Studying", null);
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-28",
-    "2025-01-10",
-    "2025-01-18",
-    "2025-01-26"
-];
-
-hobbies.addHobby("Reading", "Stimulating");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2025-01-02",
-    "2025-01-08",
-    "2025-01-15",
-    "2025-01-23",
-    "2025-01-27"
-];
-
-hobbies.addHobby("Birdwatching", "Physical");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-30",
-    "2025-01-05",
-    "2025-01-14",
-    "2025-01-21"
-];
-
-hobbies.addHobby("Cooking", "Creative");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-20",
-    "2024-12-25",
-    "2024-12-28",
-    "2025-01-02",
-    "2025-01-10",
-    "2025-01-18"
-];
-
-hobbies.addHobby("Music 🎶", "Relaxing");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-26",
-    "2025-01-06",
-    "2025-01-13",
-    "2025-01-20",
-    "2025-01-26"
-];
-
-hobbies.addHobby("Photography", "Stimulating");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2024-12-31",
-    "2025-01-11",
-    "2025-01-21",
-    "2025-01-24"
-];
-
-hobbies.addHobby("Digital Art", "Creative");
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [];
-
-hobbies.addHobby("Reading VNs", null); // No category
-hobbies.hobbies[hobbies.hobbies.length - 1].hobbyHistory = [
-    "2025-01-03",
-    "2025-01-09",
-    "2025-01-15",
-    "2025-01-22",
-    "2025-01-28"
-];
-
-hobbies.persistToLocalStorage();*/
 
 function addHobby() {
   if (newHobby.value.trim()) {
@@ -106,32 +32,132 @@ function isDoneToday(hobby) {
 
 function getLatestDate(hobby) {
   if (!hobby.hobbyHistory || hobby.hobbyHistory.length === 0) return null;
-  // just in case the hobbies are ever saved out of order
+  // just in case the hobby histories are ever saved out of order
   return hobby.hobbyHistory.slice().sort().pop();
 }
+
+const checkboxOne = ref(true)
 
 </script>
 
 <template>
-  <form @submit.prevent="addHobby">
-    <input v-model="newHobby" required placeholder="Enter hobby here...">
-    <select v-model="newCategory">
-      <option v-for="category in hobbies.categories" :key="category" :value="category">{{ category }}</option>
-    </select>
-    <button>+</button>
-  </form>
-  <ul>
-    <li v-for="hobby in hobbies.hobbies" :key="hobby.id">
-      <input type="checkbox" :checked="isDoneToday(hobby)" @change="toggleDoneToday(hobby.id)">
-      {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
-      <span class="date">{{ getLatestDate(hobby) || "Never" }}</span>
-      <button @click="removeHobby(hobby.id)">x</button>
-    </li>
-  </ul>
+  
+  <div>
+    <form @submit.prevent="addHobby">
+      <input v-model="newHobby" type="text" class="boxshadow" maxlength="25" placeholder="Enter hobby here...">
+      <VueSelect
+        class="vue-selector"
+        v-model="newCategory"
+        :options="hobbies.categoryOptions"
+        :isClearable="false"
+        placeholder="Category"
+      />
+      <button class="material-icons add-button boxshadow">add</button>
+    </form>
+    <ul>
+      <li class="boxshadow" v-for="hobby in hobbies.hobbies" :key="hobby.id">
+        <div class="li-left">
+          <CheckboxRoot :checked="isDoneToday(hobby)" @update:checked="toggleDoneToday(hobby.id)" class="CheckboxRoot">
+            <CheckboxIndicator class="CheckboxIndicator">✓</CheckboxIndicator>
+          </CheckboxRoot>
+          {{ hobby.text }} ({{ hobby.category || "Uncategorised" }})
+        </div>
+        <div class="li-right">
+          <span class="text-secondary">{{ getLatestDate(hobby) || "Never" }}</span>
+          <button @click="removeHobby(hobby.id)" class="material-icons delete-button">delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
-.date {
-  color: #888;
+
+form {
+  display: flex;
+  gap: var(--space-md);
+  width: var(--container-sm);
+  margin-bottom: var(--space-lg);
 }
+
+/* List Element Styling */
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  width: var(--container-sm);
+  border-radius: var(--border-radius);
+  background: var(--foreground);
+  transition-duration: 0.4s;
+}
+
+.li-left, .li-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.li-left {
+  flex-grow: 1;
+}
+
+li:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+}
+
+li:hover .text-secondary {
+  color: var(--text-faded-highlight);
+}
+
+li button {
+  color: inherit;
+  background: none;
+}
+
+/* Input Field Styling */
+
+input[type=text] {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--text-faded);
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--foreground);
+}
+
+input[type=text]:focus {
+  color: var(--text-highlight);
+  outline: none;
+  background: var(--foreground-highlight);
+}
+
+option {
+  font-family: var(--body-font);
+}
+
+.delete-button:hover {
+  color: var(--danger);
+  background: none;
+  transition: 0.4s;
+}
+
+.add-button {
+  flex: 0 0 auto;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius);
+  background: var(--foreground);
+}
+
+button:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+  transition-duration: 0.4s;
+}
+
 </style>

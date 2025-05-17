@@ -4,7 +4,7 @@ import { computed, ref } from 'vue';
 import { useHobbiesStore } from '../stores/hobbies';
 
 const hobbies = useHobbiesStore();
-const filteredHobbiesMonth = computed(() => hobbies.getHobbiesLastMonth());
+const allHobbies = computed(() => hobbies.hobbies);
 
 const weightOptions = {
   balance: { frequency: 0.33, recency: 0.33, category: 0.33},
@@ -17,9 +17,10 @@ const selectedWeight = ref('balance');
 
 // All this math is courtesy of DeepSeek R1 🙏
 const hobbySuggestions = computed(() => {
-  const hobbyMetrics = filteredHobbiesMonth.value
+  console.log(allHobbies);
+  const hobbyMetrics = allHobbies.value
     .filter(hobby => !isDoneToday(hobby)) //to ensure the suggestion for what to do today is actually useful
-    .map(hobby => ({...hobby}));
+    .map(hobby => ({...hobby, hobbyHistory: [...hobby.hobbyHistory]}));
   const weights = weightOptions[selectedWeight.value];
   const categoryActivity = {};
   const today = new Date();
@@ -56,10 +57,10 @@ function isDoneToday(hobby) {
 
 function getTimeMessage(hobby) {
   const dayDiff = getTimeFrame(hobby);
-  if (dayDiff == 1) return "You haven't tried this one yet.";
-  if (dayDiff == 0) return "Last done today.";
-  if (dayDiff == -1) return "Last done yesterday.";
-  return `Last done ${Math.abs(dayDiff)} days ago.`;
+  if (dayDiff == 1) return "New";
+  if (dayDiff == 0) return "Today";
+  if (dayDiff == -1) return "Yesterday";
+  return `${Math.abs(dayDiff)} days ago`;
 }
 
 function getTimeFrame(hobby) {
@@ -76,16 +77,53 @@ function getTimeFrame(hobby) {
 </script>
 
 <template>
-  <label for="weight-selector">Select Weighting: </label>
-    <select id="weight-selector" v-model="selectedWeight">
-      <option value="balance">Balanced</option>
-      <option value="categoryDiversity">Category Diversity</option>
-      <option value="shortDiversity">Short Term</option>
-      <option value="longDiversity">Long Term</option>
-    </select>
-  <ul>
-    <li v-for="hobby in hobbySuggestions" :key="hobby.id">
-      {{ hobby.text }} ({{ hobby.category }}) - {{ getTimeMessage(hobby) }}
-    </li>
-  </ul>
+  <div>
+    <h3>If You're Stuck on What To Do, Give These Hobbies a Try</h3>
+    <ul>
+      <li class="boxshadow" v-for="hobby in hobbySuggestions" :key="hobby.id">
+        <!-- TODO: if hobby list empty (all hobbies done today), congrats on doing all your hobbies today (if total hobby list > 5) else suggest trying to find more hobbies -->
+        {{ hobby.text }} ({{ hobby.category }})
+        <span class="text-secondary">{{ getTimeMessage(hobby) }}</span>
+      </li>
+    </ul>
+    <label style="color: var(--text-faded);" for="weight-selector">Select Suggestion Strategy: </label>
+      <select id="weight-selector" v-model="selectedWeight">
+        <option value="balance">Balanced</option>
+        <option value="categoryDiversity">Category Diversity</option>
+        <option value="shortDiversity">Short Term</option>
+        <option value="longDiversity">Long Term</option>
+      </select>
+  </div>
 </template>
+
+<style scoped>
+
+ul {
+  padding: var(--space-lg) 0px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  width: var(--container-s);
+  border-radius: var(--border-radius);
+  background: var(--highlight);
+  transition-duration: 0.4s;
+}
+
+li:hover {
+  color: var(--text-highlight);
+  background: var(--foreground-highlight);
+}
+
+li:hover .text-secondary {
+  color: var(--text-faded-highlight);
+  transition-duration: 0.4s;
+}
+
+
+</style>

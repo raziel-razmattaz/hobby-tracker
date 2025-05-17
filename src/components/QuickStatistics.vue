@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import { useHobbiesStore } from '../stores/hobbies';
 import TopHobbiesChart from './TopHobbiesChart.vue';
 import DistributionChart from './DistributionChart.vue';
+import { color } from 'chart.js/helpers';
 
 const hobbies = useHobbiesStore();
 
@@ -24,7 +25,8 @@ const topChartData = computed(() => {
       {
         label: 'Top Hobbies',
         data,
-        backgroundColor: 'rgba(245, 40, 145, 0.8)'
+        backgroundColor: 'rgb(240, 40, 143)',
+        hoverBackgroundColor: 'rgb(255, 0, 132)',
       }
     ]
   };
@@ -40,8 +42,36 @@ const topChartOptions = {
   },
   scales: {
     x: {
-      beginAtZero: true
-    }
+      beginAtZero: true,
+      grid: {
+        color: 'rgba(255, 255, 255, 0.12)'
+      },
+      ticks: {
+        color: 'rgba(255, 255, 255, 0.4)',
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
+      },
+      border: {
+        color: 'rgba(255, 255, 255, 0.2)'
+      }
+    },
+    y: {
+      grid: {
+        display: false
+      },
+      ticks: {
+        color: 'rgba(255, 255, 255, 0.4)',
+        font: {
+          family: '"Inria Sans", sans-serif',
+          size: 12
+        },
+      },
+      border: {
+        color: 'rgba(255, 255, 255, 0.2)'
+      }
+    },
   }
 };
 
@@ -49,13 +79,14 @@ const topChartOptions = {
 
 <template>
   <div>
-    <h3>Quick Overview</h3>
-    <div style="width: 400px">
+    <h3>Your Recent Favourites</h3>
+    <div style="width: var(--container-s)" class="p-md">
       <TopHobbiesChart :topChartData="topChartData" :topChartOptions="topChartOptions">
         Chart couldn't render.
       </TopHobbiesChart>
     </div>
-    <div style="width: 400px;">
+    <h3>How You've Been Spending Your Time</h3>
+    <div style="width: var(--container-s)" class="p-md">
       <DistributionChart :chartInput="filteredHobbies">
         Chart couldn't render.
       </DistributionChart>
