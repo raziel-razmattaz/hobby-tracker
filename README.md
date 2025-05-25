@@ -1,6 +1,6 @@
 # 🎯 chronoDot | Hobby Tracker
 
-**chronoDot** is a web app designed to help users monitor and balance their hobbies across various categories, promoting a well-rounded lifestyle. 
+**chronoDot** is a web app designed to help users monitor and balance their hobbies across various categories, promoting a well-rounded lifestyle. While the web app is still missing some polish and features, you can [try it here](https://raziel-razmattaz.github.io/hobby-tracker/).
 
 ## 🚀 Features
 
@@ -28,6 +28,8 @@
 - **Improve Mobile Responsiveness**: Improve user comfort on mobile devices.
 
 ## 🛠️ Installation
+
+If you want to run the hobby-tracker on your own system.
 
 1. **Clone the repository**:
 
