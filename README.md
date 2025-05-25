@@ -10,6 +10,7 @@
 - **Calendar Heatmap**: Look back on the last months and see how active you were each day.
 - **Customizable Settings**: Reset data, delete hobbies, and filter views by category.
 - **No Accounts Necessary**: All data is stored only in your browser.
+- **Responsive**: Use from the comfort of your phone, tablet or desktop.
 
 ## 🖥️ Tech Stack
 
@@ -18,13 +19,13 @@
 - **Charts**: [Chart.js](https://www.chartjs.org/)
 - **Calendar**: [Vue Cal](https://antoniandre.github.io/vue-cal/)
 
-## Roadmap
+## 🚧 Roadmap
 
-- **Extended Settings**: Add theme toggle and high contrast mode
-- **Save Data Import/Export**: Add ability to import/export hobby data in JSON format
-- **Accessibility Check-Up**: Final accessibility fixes
-- **Edit Hobbies**: Add ability to edit hobbies after creation
-- **Improve Mobile Responsiveness**: Greater user comfort on mobile devices
+- **Extended Settings**: Add theme toggle and high contrast mode.
+- **Save Data Import/Export**: Add ability to import/export hobby data in JSON format.
+- **Accessibility Check-Up**: Fix accessibility concerns.
+- **Edit Hobbies**: Add ability to edit hobbies after creation.
+- **Improve Mobile Responsiveness**: Improve user comfort on mobile devices.
 
 ## 🛠️ Installation
 
