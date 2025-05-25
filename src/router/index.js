@@ -14,9 +14,13 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    base: process.env.NODE_ENV === 'production' ? '/hobby-tracker/' : '/',
+    history: createWebHistory('/hobby-tracker/'),
     routes,
+});
+
+router.beforeEach((to, from, next) => {
+    console.log(`Navigating to: ${to.path}`);
+    next();
 });
 
 export default router;
