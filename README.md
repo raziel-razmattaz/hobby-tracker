@@ -1,101 +1,47 @@
-# Hobby Tracker
+# 🎯 chronoDot | Hobby Tracker
 
-## Secondary Must-Haves:
+**chronoDot** is a web app designed to help users monitor and balance their hobbies across various categories, promoting a well-rounded lifestyle. 
 
-1. ~~Statistics Component: Reset All Frequency Data (but not hobbies!)~~
+## 🚀 Features
 
-1. ~~Settings Component: Delete All Hobbies (incl Frequency Data)~~
+- **Add & Manage Hobbies**: Input hobbies and assign them to categories like Creative, Relaxing, Social, etc.
+- **Track Engagement**: Log activity for each hobby every day.
+- **Visual Analytics**: View statistics over different time frames (lifetime, last week, last month).
+- **Calendar Heatmap**: Look back on the last months and see how active you were each day.
+- **Customizable Settings**: Reset data, delete hobbies, and filter views by category.
+- **No Accounts Necessary**: All data is stored only in your browser.
 
-1. ~~Pinia Store: Hobby Categories (Creative, Stimulating, Physical, Productive, Social, Relaxing)~~
+## 🖥️ Tech Stack
 
-1. ~~Pinia Store/Hobby Component: Ability to Filter by Hobby Categories (Button Toggle)~~
+- **Frontend**: [Vue 3](https://vuejs.org/), [Vite](https://vitejs.dev/)
+- **State Management**: [Pinia](https://pinia.vuejs.org/)
+- **Charts**: [Chart.js](https://www.chartjs.org/)
+- **Calendar**: [Vue Cal](https://antoniandre.github.io/vue-cal/)
 
-1. ~~Frequency Component: Filter data between Lifetime, Last Week or Last Month only~~
+## Roadmap
 
-1. ~~Suggestions Component: Basic Suggestions Algorithm Implement~~
+- **Extended Settings**: Add theme toggle and high contrast mode
+- **Save Data Import/Export**: Add ability to import/export hobby data in JSON format
+- **Accessibility Check-Up**: Final accessibility fixes
+- **Edit Hobbies**: Add ability to edit hobbies after creation
+- **Improve Mobile Responsiveness**: Greater user comfort on mobile devices
 
-1. ~~Suggestions Component: Toggle different weight defaults~~
+## 🛠️ Installation
 
-1. ~~Suggestions Component: Balance Meter Spider Web Chart for category performance this week~~
+1. **Clone the repository**:
 
-1. Pinia Store: Settings Store (ie theme, which frequency chart view etc)
+   ```bash
+   git clone https://github.com/raziel-razmattaz/hobby-tracker.git
+   cd hobby-tracker
+1. **Install dependencies**:
 
-1. ~~Basic About~~
+   ```bash
+   npm install
+1. **Run the development server**:
 
-1. Intro Component to explain Hobby Tracker Functionality if no Hobbies
+   ```bash
+   npm run dev
+1. **Access the App**:
 
-1. Edit Hobby Title?
-
-1. Settings Component: Import/Export LocalStorage Save Data
-
-1. ~~CSS: Implement UI Design~~
-
-1. ~~CSS: Ensure basic responsive UI on Mobile and Desktop~~
-
-1. CSS: Test and make note of small complaints on mobile and fix!
-
-1. Settings Component: UI Dark and Light Mode Switch
-
-1. Accesibility Check and Fixes
-
-1. Finish Documentation
-
-1. Host Hobby Tracker somewhere...?
-
-## ~~Must-Haves:~~
-
-1. ~~Basic Hobby Store in Pinia~~
-
-1. ~~Basic Hobby Manager (Add & Delete Hobbies) through Store Access~~
-
-1. ~~Save Hobby Store in LocalStorage~~
-
-1. ~~Toggling checkmark on records current date in HobbyHistory~~
-
-1. ~~Toggling checkmark off removes current date in HobbyHistory~~
-
-1. ~~Checkmarks shows correctly according to HobbyHistory upon Page Reload~~
-
-1. ~~Unchecking should revert to show previous latest save date~~
-
-1. ~~If no latest date exist, display "Never" in place of date~~
-
-1. ~~Basic Statistics component through Store Access~~
-
-1. ~~Basic Test Bar Chart using Chart.js~~
-
-1. ~~Calculated Statistics: How frequently did you do [hobby]?~~
-
-1. ~~Pass Custom Data to Chart Component~~
-
-1. ~~Hobby Frequency Graph: Frequency Comparison of all Hobbies~~
-
-1. ~~Calculated Statistics: What are the hobbies you did the most?~~
-
-1. ~~Quick Overview Component: Simple Bar Chart of top 3 most frquently done Hobbies~~
-
-1. ~~Basic Quick Overview Component: Top Hobbies + Something else...?~~
-
-1. ~~Basic Hobby Pie Chart Component~~
-
-1. ~~Basic Calender Review Component: Hobby Activity colours days~~
-
-1. ~~Basic Calendar Review Component: Clicking on Day switches on detailed Day view (list of what you did)~~
-
-1. ~~Calculated Statistics: How long has it been since you’ve last done [hobby]?~~
-
-1. ~~Limit Quick Overview Top/Distribution to data from last 30 days~~
-
-1. ~~Main Menu Component~~
-
-1. ~~Ability to switch out Hobby List, Calendar and Statistics components in Main Menu using Button Toggle~~
-
-1. ~~Sort all components into pages~~
-
-1. ~~Refactor Stats Components (esp Donut) for Reusability~~
-
-1. ~~Stats Component: Add lifetime donut~~
-
-1. ~~Figma: Finished UI Design~~
-
-
+   ```bash
+   o + enter to open in browser
